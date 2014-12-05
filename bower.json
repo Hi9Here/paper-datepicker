@@ -1,0 +1,16 @@
+{
+  "name": "testing-dialog",
+  "version": "0.0.0",
+  "homepage": "https://github.com/HackITtoday/testing-dialog",
+  "authors": [
+    "marcus hitchins <marcus7777@gmail.com>"
+  ],
+  "description": "testing out",
+  "keywords": [
+    "testing"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "paper-dialog": "Polymer/paper-dialog#~0.5.1"
+  }
+}
