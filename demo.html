@@ -20,8 +20,10 @@
         <button>
             Modal dialog with backdrop and actions
             <paper-action-dialog backdrop autoCloseDisabled>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
+              <template repeat="{{ date in dates }}">
+                <p>{{date}}</p>
+              </template>
                 <paper-button affirmative autofocus>Tap me to close</paper-button>
                 <paper-button affirmative>Decline</paper-button>
             </paper-action-dialog>
@@ -31,6 +33,7 @@
 
 <script>
     var scope = document.querySelector('template[is=auto-binding]');
+    scope.dates = ["1","2","3","4","5","6","7","8","9"] 
     scope.toggleDialog1 = function(e) {
         if (e.target.localName != 'button') {
             return;
