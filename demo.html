@@ -62,64 +62,25 @@
 
     </style>
 
-    <!--
-      <style>
-        body {
-          -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-          font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
-          font-size: 16px;
-          color: rgba(0, 0, 0, 0.87);
-        }
-
-        paper-dialog {
-          width: 50%;
-          min-width: 430px;
-        }
-
-        p {
-          margin-bottom: 0;
-        }
-
-        paper-dialog paper-button {
-          font-weight: bold;
-        }
-
-        paper-button[autofocus] {
-          color: #4285f4;
-        }
-      </style>
-      -->
 </head>
 <body unresolved>
-
 <template is="auto-binding">
-
     <section on-tap="{{toggleDialog1}}">
-
         <div>Dialog Layouts</div>
-
         <button>
             Modal dialog with backdrop and actions
-
             <paper-action-dialog backdrop autoCloseDisabled>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
                 <paper-button affirmative autofocus>Tap me to close</paper-button>
                 <paper-button affirmative>Decline</paper-button>
             </paper-action-dialog>
-
         </button>
-
     </section>
-
 </template>
 
 <script>
-
-
     var scope = document.querySelector('template[is=auto-binding]');
-
     scope.toggleDialog1 = function(e) {
         if (e.target.localName != 'button') {
             return;
@@ -130,23 +91,6 @@
         }
         d.toggle();
     };
-
-    scope.transitions = [
-        'core-transition-center',
-        'core-transition-top',
-        'core-transition-bottom',
-        'core-transition-left',
-        'core-transition-right'
-    ];
-
-    scope.toggleDialog2 = function(e) {
-        if (e.target.localName != 'button') {
-            return;
-        }
-        scope.transition = e.target.getAttribute('transition');
-        document.getElementById('dialog2').toggle();
-    };
-
 </script>
 
 </body>
