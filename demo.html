@@ -9,6 +9,7 @@
     <title>paper-dialog</title>
 
     <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
     <link href="bower_components/paper-dialog/paper-dialog.html" rel="import">
     <link href="bower_components/paper-dialog/paper-action-dialog.html" rel="import">
 
@@ -17,25 +18,44 @@
 <template is="auto-binding">
     <section on-tap="{{toggleDialog1}}">
         <button>
-          {{day}}/{{mouth}}/{{year}}
+          {{now|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
-
-              <template repeat="{{ date in dates }}">
-                <p>{{date}}</p>
-              </template>
-                <paper-button affirmative autofocus>OK</paper-button>
-                <paper-button affirmative>CANCEL</paper-button>
+              <div class="top 1" >{{now|format('dddd')}}</div>
+              <div class="top 2" >{{now|format('MMMM')}}</div>
+              <div class="top 3" >{{now|format('Do')}}</div>
+              <div class="top 4" >{{now|format('YYYY')}}</div>
+              <div class="days 1">
+                <template repeat="{{ day_of_the_week in days_of_the_week }}">
+                  {{day_of_the_week | firstLetter}}
+                </template>
+              </div>
+              <div class="days 2">
+                <template repeat="{{ day in days }}">
+                  <p>{{day}}</p>
+                </template>
+              </div>
+              <paper-button affirmative autofocus>OK</paper-button>
+              <paper-button affirmative>CANCEL</paper-button>
             </paper-action-dialog>
         </button>
     </section>
 </template>
 
 <script>
+    moment.locale('en-gb');
+    PolymerExpressions.prototype.firstLetter = function(input) {
+      return input[0];
+    };
+    PolymerExpressions.prototype.format = function(input, letter) {
+      return moment(input).format(letter);
+    };
+
     var scope = document.querySelector('template[is=auto-binding]');
-    scope.dates = ["1","2","3","4","5","6","7","8","9"] ;
-    scope.day = "27" ;
-    scope.mouth = 9;
-    scope.year = 77;
+    scope.days_of_the_week = moment.weekdaysMin();
+    scope.days = Array();
+    for(i=1;i<=moment().daysInMonth();i++){
+      scope.days[i] = i;
+    }
     scope.toggleDialog1 = function(e) {
         if (e.target.localName != 'button') {
             return;
