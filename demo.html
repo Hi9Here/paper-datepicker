@@ -12,6 +12,7 @@
     <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
     <link href="bower_components/paper-dialog/paper-dialog.html" rel="import">
     <link href="bower_components/paper-dialog/paper-action-dialog.html" rel="import">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
     <style>        html /deep/ paper-action-dialog .top {
                 background:#009688;
                 color:#fff;
@@ -79,7 +80,7 @@
 <body unresolved>
 <template is="auto-binding">
     <section on-tap="{{toggleDialog1}}">
-        <button>
+        <paper-button raised>
             {{now|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
                 <div class="top a" >{{now|format('dddd')}}</div>
@@ -104,7 +105,7 @@
                 <paper-button affirmative>CANCEL</paper-button>
                 <paper-button affirmative autofocus>OK</paper-button>
             </paper-action-dialog>
-        </button>
+        </paper-button>
     </section>
 </template>
 
