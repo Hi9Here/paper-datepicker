@@ -12,32 +12,68 @@
     <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
     <link href="bower_components/paper-dialog/paper-dialog.html" rel="import">
     <link href="bower_components/paper-dialog/paper-action-dialog.html" rel="import">
-    <style>
-        html /deep/ paper-action-dialog .top.a {
-            background:#4f9a92;
-        }
-        html /deep/ paper-action-dialog .top {
-            background:#009688;
-            color:#fff;
-            text-align:center;
-        }
-        html /deep/ paper-action-dialog .top.b {
-            text-transform: uppercase;
-        }
-
-        html /deep/ paper-action-dialog .days.a{
-            text-align:center;
-        }
-
-        html /deep/ paper-action-dialog  paper-button {
-            color: #009688;
-            padding: 10px;
-            min-width: 39px;
-        }
-
-        html /deep/ paper-action-dialog   {
-            font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-        }
+    <style>        html /deep/ paper-action-dialog .top {
+                background:#009688;
+                color:#fff;
+                text-align:center;
+            }
+            html /deep/ paper-action-dialog .top.a {
+                background:#00796b;
+                padding: 8px;
+              font-size:14px;
+            }
+            html /deep/ #scroller {
+              padding: 0;
+            }
+            html /deep/ paper-action-dialog .top.b {
+              font-size:34px;
+              padding-top:10px;
+                text-transform: uppercase;
+            }
+            html /deep/ paper-action-dialog .top.c {
+              font-size:60px;
+            }
+            html /deep/ paper-action-dialog .top.d {
+              font-size: 30px;
+              color: #8acfc8;
+              padding: 10px 0 10px;
+            }
+    
+            html /deep/ paper-action-dialog .days{
+              width: 300px;
+              text-align:left;
+            }
+            html /deep/ paper-action-dialog .days.a{
+              font-size: 15px;
+              text-align:center;
+              font-weight: bold;
+              padding: 17px 0 1px;
+            }
+            html /deep/ paper-action-dialog .days.b{
+              font-size:14px;
+            }
+            html /deep/ paper-action-dialog .days span{
+              width:39px;
+              padding: 12px 0;
+              display: inline-block;
+              text-align:center;
+            }
+            html /deep/ paper-action-dialog .days span:first-child{
+              
+            }
+            html /deep/ paper-action-dialog .days.c{
+              font-size:14px;
+            }
+    
+            html /deep/ paper-action-dialog  paper-button {
+                color: #009688;
+                padding: 10px;
+                min-width: 39px;
+            }
+    
+            html /deep/ paper-action-dialog   {
+                font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
     </style>
 </head>
 <body unresolved>
@@ -47,19 +83,22 @@
             {{now|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
                 <div class="top a" >{{now|format('dddd')}}</div>
-                <div class="top b" style="
-                      ">{{now|format('MMM')}}</div>
+                <div class="top b" >{{now|format('MMM')}}</div>
                 <div class="top c" >{{now|format('D')}}</div>
                 <div class="top d" >{{now|format('YYYY')}}</div>
                 <div class="days a" >{{now|format('MMMM YYYY')}}</div>
                 <div class="days b">
                     <template repeat="{{ day_of_the_week in days_of_the_week }}">
-                        {{day_of_the_week | firstLetter}}
+                      <span>{{day_of_the_week | firstLetter}}</span>
                     </template>
                 </div>
                 <div class="days c">
+                    
+                    <template repeat="{{ day in notDays }}">
+                        <span></span>
+                    </template>
                     <template repeat="{{ day in days }}">
-                        <span class="{{day|theday }}">{{day}}</span>
+                        <span>{{day}}</span>
                     </template>
                 </div>
                 <paper-button affirmative>CANCEL</paper-button>
@@ -71,9 +110,8 @@
 
 <script>
     moment.locale('en-gb');
-    PolymerExpressions.prototype.theday = function(input) {
-        return moment(input,"d").format("ddd");
-    };
+    
+    
     PolymerExpressions.prototype.firstLetter = function(input) {
         return input[0];
     };
@@ -84,6 +122,12 @@
     var scope = document.querySelector('template[is=auto-binding]');
     scope.days_of_the_week = moment.weekdaysMin();
     scope.days = Array();
+    scope.notDays = Array();
+    var notdays = +moment(1,"d").format("d")- 1
+    if (notdays >= 0) {
+      scope.notDays[ notdays ] = "";
+    }
+    debugger;
     for(i=1;i<=moment().daysInMonth();i++){
         scope.days[i-1] = i;
     }
