@@ -80,7 +80,7 @@
 <body unresolved>
 <template is="auto-binding">
     <section on-tap="{{toggleDialog1}}">
-        <paper-button raised>
+        <button>
             {{now|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
                 <div class="top a" >{{now|format('dddd')}}</div>
@@ -105,7 +105,7 @@
                 <paper-button affirmative>CANCEL</paper-button>
                 <paper-button affirmative autofocus>OK</paper-button>
             </paper-action-dialog>
-        </paper-button>
+        </button>
     </section>
 </template>
 
