@@ -12,7 +12,29 @@
     <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
     <link href="bower_components/paper-dialog/paper-dialog.html" rel="import">
     <link href="bower_components/paper-dialog/paper-action-dialog.html" rel="import">
+    <style>
+html /deep/ paper-action-dialog .top.a {
+  background:#4f9a92;
+}
+html /deep/ paper-action-dialog .top {
+  background:#009688;
+  color:#fff;
+  text-align:center;
+}
+html /deep/ paper-action-dialog .top.b {
+  text-transform: uppercase;
+}
 
+html /deep/ paper-action-dialog .days.a{
+  text-align:center;
+}
+
+html /deep/ paper-action-dialog  paper-button {
+  color: #009688;
+  padding: 10px;
+  min-width: 39px;
+}
+    </style>
 </head>
 <body unresolved>
 <template is="auto-binding">
@@ -20,29 +42,31 @@
         <button>
           {{now|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
-              <div class="top 1" >{{now|format('dddd')}}</div>
-              <div class="top 2" >{{now|format('MMMM')}}</div>
-              <div class="top 3" >{{now|format('Do')}}</div>
-              <div class="top 4" >{{now|format('YYYY')}}</div>
-              <div class="days 1">
+              <div class="top a" >{{now|format('dddd')}}</div>
+              <div class="top b" style="
+                      ">{{now|format('MMM')}}</div>
+              <div class="top c" >{{now|format('D')}}</div>
+              <div class="top d" >{{now|format('YYYY')}}</div>
+              <div class="days a" >{{now|format('MMMM YYYY')}}</div>
+              <div class="days b">
                 <template repeat="{{ day_of_the_week in days_of_the_week }}">
                   {{day_of_the_week | firstLetter}}
                 </template>
               </div>
-              <div class="days 2">
+              <div class="days c">
                 <template repeat="{{ day in days }}">
                   <span class="{{day|theday }}">{{day}}</span>
                 </template>
               </div>
-              <paper-button affirmative autofocus>OK</paper-button>
               <paper-button affirmative>CANCEL</paper-button>
+              <paper-button affirmative autofocus>OK</paper-button>
             </paper-action-dialog>
         </button>
     </section>
 </template>
 
 <script>
-    moment.locale('fr');
+    moment.locale('en-gb');
     PolymerExpressions.prototype.theday = function(input) {
       return moment(input,"d").format("ddd");
     };
