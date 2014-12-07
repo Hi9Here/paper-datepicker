@@ -13,53 +13,57 @@
     <link href="bower_components/paper-dialog/paper-dialog.html" rel="import">
     <link href="bower_components/paper-dialog/paper-action-dialog.html" rel="import">
     <style>
-html /deep/ paper-action-dialog .top.a {
-  background:#4f9a92;
-}
-html /deep/ paper-action-dialog .top {
-  background:#009688;
-  color:#fff;
-  text-align:center;
-}
-html /deep/ paper-action-dialog .top.b {
-  text-transform: uppercase;
-}
+        html /deep/ paper-action-dialog .top.a {
+            background:#4f9a92;
+        }
+        html /deep/ paper-action-dialog .top {
+            background:#009688;
+            color:#fff;
+            text-align:center;
+        }
+        html /deep/ paper-action-dialog .top.b {
+            text-transform: uppercase;
+        }
 
-html /deep/ paper-action-dialog .days.a{
-  text-align:center;
-}
+        html /deep/ paper-action-dialog .days.a{
+            text-align:center;
+        }
 
-html /deep/ paper-action-dialog  paper-button {
-  color: #009688;
-  padding: 10px;
-  min-width: 39px;
-}
+        html /deep/ paper-action-dialog  paper-button {
+            color: #009688;
+            padding: 10px;
+            min-width: 39px;
+        }
+
+        html /deep/ paper-action-dialog   {
+            font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
     </style>
 </head>
 <body unresolved>
 <template is="auto-binding">
     <section on-tap="{{toggleDialog1}}">
         <button>
-          {{now|format("l")}}
+            {{now|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
-              <div class="top a" >{{now|format('dddd')}}</div>
-              <div class="top b" style="
+                <div class="top a" >{{now|format('dddd')}}</div>
+                <div class="top b" style="
                       ">{{now|format('MMM')}}</div>
-              <div class="top c" >{{now|format('D')}}</div>
-              <div class="top d" >{{now|format('YYYY')}}</div>
-              <div class="days a" >{{now|format('MMMM YYYY')}}</div>
-              <div class="days b">
-                <template repeat="{{ day_of_the_week in days_of_the_week }}">
-                  {{day_of_the_week | firstLetter}}
-                </template>
-              </div>
-              <div class="days c">
-                <template repeat="{{ day in days }}">
-                  <span class="{{day|theday }}">{{day}}</span>
-                </template>
-              </div>
-              <paper-button affirmative>CANCEL</paper-button>
-              <paper-button affirmative autofocus>OK</paper-button>
+                <div class="top c" >{{now|format('D')}}</div>
+                <div class="top d" >{{now|format('YYYY')}}</div>
+                <div class="days a" >{{now|format('MMMM YYYY')}}</div>
+                <div class="days b">
+                    <template repeat="{{ day_of_the_week in days_of_the_week }}">
+                        {{day_of_the_week | firstLetter}}
+                    </template>
+                </div>
+                <div class="days c">
+                    <template repeat="{{ day in days }}">
+                        <span class="{{day|theday }}">{{day}}</span>
+                    </template>
+                </div>
+                <paper-button affirmative>CANCEL</paper-button>
+                <paper-button affirmative autofocus>OK</paper-button>
             </paper-action-dialog>
         </button>
     </section>
@@ -68,20 +72,20 @@ html /deep/ paper-action-dialog  paper-button {
 <script>
     moment.locale('en-gb');
     PolymerExpressions.prototype.theday = function(input) {
-      return moment(input,"d").format("ddd");
+        return moment(input,"d").format("ddd");
     };
     PolymerExpressions.prototype.firstLetter = function(input) {
-      return input[0];
+        return input[0];
     };
     PolymerExpressions.prototype.format = function(input, letter) {
-      return moment(input).format(letter);
+        return moment(input).format(letter);
     };
 
     var scope = document.querySelector('template[is=auto-binding]');
     scope.days_of_the_week = moment.weekdaysMin();
     scope.days = Array();
     for(i=1;i<=moment().daysInMonth();i++){
-      scope.days[i-1] = i;
+        scope.days[i-1] = i;
     }
     scope.toggleDialog1 = function(e) {
         if (e.target.localName != 'button') {
