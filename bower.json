@@ -11,7 +11,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "paper-dialog":  "Polymer/paper-dialog#~0.5.1",
-    "moment": "~2.8.4"
+    "paper-dialog": "Polymer/paper-dialog#~0.5.1",
+    "moment": "~2.8.4",
+    "paper-button": "Polymer/paper-button#~0.5.1"
   }
 }
