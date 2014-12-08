@@ -46,7 +46,41 @@
         font-size:14px;
       }
       html /deep/ paper-action-dialog .days span.today {
-        color:#fff; background:#009688; border-radius: 20px;
+        color:#fff; background:#B0B0B0; border-radius: 20px;
+      }
+      html /deep/ .days.d1 span.d1,
+      html /deep/ .days.b2 span.b2,
+      html /deep/ .days.d3 span.d3,
+      html /deep/ .days.d4 span.d4,
+      html /deep/ .days.d5 span.d5,
+      html /deep/ .days.d6 span.d6,
+      html /deep/ .days.d7 span.d7,
+      html /deep/ .days.d8 span.d8,
+      html /deep/ .days.d9 span.d9,
+      html /deep/ .days.d10 span.d10,
+      html /deep/ .days.d11 span.d11,
+      html /deep/ .days.d12 span.d12,
+      html /deep/ .days.d13 span.d13,
+      html /deep/ .days.d14 span.d14,
+      html /deep/ .days.d15 span.d15,
+      html /deep/ .days.d16 span.d16,
+      html /deep/ .days.d17 span.d17,
+      html /deep/ .days.d18 span.d18,
+      html /deep/ .days.d19 span.d19,
+      html /deep/ .days.d20 span.d20,
+      html /deep/ .days.d21 span.d21,
+      html /deep/ .days.d22 span.d22,
+      html /deep/ .days.d23 span.d23,
+      html /deep/ .days.d24 span.d24,
+      html /deep/ .days.d25 span.d25,
+      html /deep/ .days.d26 span.d26,
+      html /deep/ .days.d27 span.d27,
+      html /deep/ .days.d28 span.d28,
+      html /deep/ .days.d29 span.d29,
+      html /deep/ .days.d30 span.d30,
+      html /deep/ .days.d31 span.d31
+      {
+        color:#fff; background:#009688; border-radius: 20px;,
       }
       html /deep/ paper-action-dialog .days span {
         width: 39px; display: inline-block; text-align: center; height: 39px; line-height: 39px;
@@ -74,19 +108,19 @@
                 <div class="c" >{{datePicking|format('D')}}</div>
                 <div class="d" >{{datePicking|format('YYYY')}}</div>
               </div>
-              <div class="days">
+              <div class="days d{{datePicking|format('D')}}">
                 <div class="a" >{{datePicking|format('MMMM YYYY')}}</div>
                 <div class="b">
                   <template repeat="{{ day_of_the_week in days_of_the_week }}">
                     <span>{{day_of_the_week | firstLetter}}</span>
                   </template>
                 </div>
-                <div class="c d{{datePicking|format('D')}}">
+                <div class="c">
                   <template repeat="{{ day in notDays }}">
                     <span></span>
                   </template>
                   <template repeat="{{ day in days }}">
-                    <span class="{{day | today}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
+                  <span class="{{day | today}} d{{day}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
                   </template>
                 </div>
               </div>
@@ -212,7 +246,6 @@
     scope.dateClicked = function(e) {
       var element = e.originalTarget ? e.originalTarget : e.toElement;
       scope.datePicking = moment(element.textContent, 'D')
-      debugger;
     }
     var notdays = +moment(1,"D").format("d")- 1
     if (notdays >= 0) {
