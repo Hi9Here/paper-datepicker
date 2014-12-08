@@ -12,7 +12,8 @@
     <link href="bower_components/paper-dialog/paper-dialog.html" rel="import">
     <link href="bower_components/paper-dialog/paper-action-dialog.html" rel="import">
     <link rel="import" href="bower_components/paper-button/paper-button.html">
-    <link rel="import" href="bower_components/font-roboto/roboto.html">
+    <!-- not working link rel="import" href="bower_components/font-roboto/roboto.html" -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:400normal&amp;subset=all" rel="stylesheet" type="text/css">
     <style>
       html /deep/ #scroller {
         padding: 0;
@@ -75,6 +76,7 @@
       }
       html /deep/ paper-action-dialog .days .c {
         font-size:14px;
+        margin-top: -21px;
       }
       html /deep/ paper-action-dialog paper-button {
         color: #009688;
@@ -82,7 +84,7 @@
         min-width: 39px;
       }
       html /deep/ paper-action-dialog   {
-          font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
     </style>
   </head>
@@ -92,7 +94,6 @@
         <button>
             {{now|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
-              
               <div class="top">
                 <div class="a" >{{now|format('dddd')}}</div>
                 <div class="b" >{{now|format('MMM')}}</div>
@@ -124,7 +125,6 @@
 
   <script>
     moment.locale('en-gb');
-    
     PolymerExpressions.prototype.firstLetter = function(input) {
       return input[0];
     };
