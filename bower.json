@@ -15,7 +15,7 @@
     "moment": "~2.8.4",
     "paper-button": "Polymer/paper-button#~0.5.1",
     "webcomponentsjs": "~0.5.1",
-    "core-iconset-svg": "Polymer/core-iconset-svg#~0.5.1",
-    "core-icon": "Polymer/core-icon#~0.5.1"
+    "core-icon": "Polymer/core-icon#~0.5.1",
+    "paper-ripple": "Polymer/paper-ripple#~0.5.1"
   }
 }

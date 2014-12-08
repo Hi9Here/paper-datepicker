@@ -94,13 +94,16 @@
       html /deep/ paper-action-dialog   {
         font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
+      html /deep/ #actions {
+        padding: 0;
+      }
     </style>
   </head>
   <body unresolved>
   <template is="auto-binding">
     <section on-tap="{{toggleDialog1}}">
       <paper-button raised role="button" tabindex="0">
-      {{datePicking|format("l")}}
+        {{datePicked|format("l")}}
         <core-icon icon="event" aria-label="event" role="img">
           <svg viewBox="0 0 24 24" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" style="pointer-events: none; display: block;" fit=""><g><path d="M17 12h-5v5h5v-5zm-1-11v2h-8v-2h-2v2h-1c-1.11 0-1.99.9-1.99 2l-.01 14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2h-1v-2h-2zm3 18h-14v-11h14v11z"></path></g></svg></core-icon>
             <paper-action-dialog class="wide" backdrop autoCloseDisabled>
@@ -127,7 +130,7 @@
                 </div>
               </div>
               <paper-button affirmative>CANCEL</paper-button>
-              <paper-button affirmative autofocus>OK</paper-button>
+              <paper-button affirmative autofocus on-click="{{datePicked = datePicking}}">OK</paper-button>
             </paper-action-dialog>
         </paper-button>
     </section>
@@ -222,7 +225,6 @@
       },
       dateClicked: function(e) {
         var element = e.originalTarget ? e.originalTarget : e.toElement;
-        debugger;
       }
     })
     moment.locale('en-gb');
@@ -240,6 +242,7 @@
     };
     var scope = document.querySelector('template[is=auto-binding]');
     scope.datePicking = moment();
+    scope.datePicked  = moment();
     scope.days_of_the_week = moment.weekdaysMin();
     scope.days = Array();
     scope.notDays = Array();
