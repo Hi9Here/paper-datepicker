@@ -13,44 +13,50 @@
     <link href="bower_components/paper-dialog/paper-action-dialog.html" rel="import">
     <link rel="import" href="bower_components/paper-button/paper-button.html">
     <style>
-      html /deep/ paper-action-dialog .top {
+      html /deep/ #scroller {
+        padding: 0;
         background:#009688;
+      }
+      html /deep/ paper-action-dialog .top {
         color:#fff;
         text-align:center;
       }
-      html /deep/ paper-action-dialog .top.a {
+      html .wide /deep/ paper-action-dialog .top {
+        float: left;
+        min-width: 300px;
+      }
+      html /deep/ paper-action-dialog .top .a {
         background:#00796b;
         padding: 8px;
         font-size:14px;
       }
-      html /deep/ #scroller {
-        padding: 0;
-      }
-      html /deep/ paper-action-dialog .top.b {
+      html /deep/ paper-action-dialog .top .b {
         font-size:34px;
         padding-top:10px;
         text-transform: uppercase;
       }
-      html /deep/ paper-action-dialog .top.c {
+      html /deep/ paper-action-dialog .top .c {
         font-size:60px;
       }
-      html /deep/ paper-action-dialog .top.d {
+      html /deep/ paper-action-dialog .top .d {
         font-size: 30px;
         color: #8acfc8;
         padding: 10px 0 10px;
       }
-
-      html /deep/ paper-action-dialog .days{
-        width: 300px;
+      html /deep/ paper-action-dialog .days {
+        background:#fff;
         text-align:left;
+        padding:0 10px;
+        float: left;
+        width: 300px;
       }
-      html /deep/ paper-action-dialog .days.a{
+      html /deep/ paper-action-dialog .days .a {
         font-size: 15px;
         text-align:center;
         font-weight: bold;
         padding: 17px 0 1px;
       }
-      html /deep/ paper-action-dialog .days.b{
+      html /deep/ paper-action-dialog .days .b {
         font-size:14px;
       }
       html /deep/ paper-action-dialog .days span{
@@ -59,10 +65,10 @@
         display: inline-block;
         text-align:center;
       }
-      html /deep/ paper-action-dialog .days.c{
+      html /deep/ paper-action-dialog .days .c{
         font-size:14px;
       }
-      html /deep/ paper-action-dialog  paper-button {
+      html /deep/ paper-action-dialog paper-button {
         color: #009688;
         padding: 10px;
         min-width: 39px;
@@ -78,26 +84,31 @@
         <button>
             {{now|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
-                <div class="top a" >{{now|format('dddd')}}</div>
-                <div class="top b" >{{now|format('MMM')}}</div>
-                <div class="top c" >{{now|format('D')}}</div>
-                <div class="top d" >{{now|format('YYYY')}}</div>
-                <div class="days a" >{{now|format('MMMM YYYY')}}</div>
-                <div class="days b">
-                    <template repeat="{{ day_of_the_week in days_of_the_week }}">
-                      <span>{{day_of_the_week | firstLetter}}</span>
-                    </template>
+              
+              <div class="top">
+                <div class="a" >{{now|format('dddd')}}</div>
+                <div class="b" >{{now|format('MMM')}}</div>
+                <div class="c" >{{now|format('D')}}</div>
+                <div class="d" >{{now|format('YYYY')}}</div>
+              </div>
+              <div class="days">
+                <div class="a" >{{now|format('MMMM YYYY')}}</div>
+                <div class="b">
+                  <template repeat="{{ day_of_the_week in days_of_the_week }}">
+                    <span>{{day_of_the_week | firstLetter}}</span>
+                  </template>
                 </div>
-                <div class="days c">
-                    <template repeat="{{ day in notDays }}">
-                        <span></span>
-                    </template>
-                    <template repeat="{{ day in days }}">
-                        <span>{{day}}</span>
-                    </template>
+                <div class="c">
+                  <template repeat="{{ day in notDays }}">
+                    <span></span>
+                  </template>
+                  <template repeat="{{ day in days }}">
+                    <span>{{day}}</span>
+                  </template>
                 </div>
-                <paper-button affirmative>CANCEL</paper-button>
-                <paper-button affirmative autofocus>OK</paper-button>
+              </div>
+              <paper-button affirmative>CANCEL</paper-button>
+              <paper-button affirmative autofocus>OK</paper-button>
             </paper-action-dialog>
         </button>
     </section>
