@@ -105,7 +105,7 @@
                     <span></span>
                   </template>
                   <template repeat="{{ day in days }}">
-                    <span>{{day}}</span>
+                    <span class="{{day | today}}">{{day}}</span>
                   </template>
                 </div>
               </div>
@@ -120,7 +120,13 @@
     moment.locale('en-gb');
     
     PolymerExpressions.prototype.firstLetter = function(input) {
-        return input[0];
+      return input[0];
+    };
+    PolymerExpressions.prototype.today = function(input) {
+      debugger;
+      if ( moment(input ,"D").isSame(moment(), "day" )) {
+        return "today";
+      }
     };
     PolymerExpressions.prototype.format = function(input, letter) {
         return moment(input).format(letter);
@@ -130,7 +136,7 @@
     scope.days_of_the_week = moment.weekdaysMin();
     scope.days = Array();
     scope.notDays = Array();
-    var notdays = +moment(1,"d").format("d")- 1
+    var notdays = +moment(1,"D").format("d")- 1
     if (notdays >= 0) {
       scope.notDays[ notdays ] = "";
     }
