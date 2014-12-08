@@ -66,16 +66,16 @@
   <template is="auto-binding">
     <section on-tap="{{toggleDialog1}}">
         <button>
-            {{now|format("l")}}
+            {{datePicking|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
               <div class="top">
-                <div class="a" >{{now|format('dddd')}}</div>
-                <div class="b" >{{now|format('MMM')}}</div>
-                <div class="c" >{{now|format('D')}}</div>
-                <div class="d" >{{now|format('YYYY')}}</div>
+                <div class="a" >{{datePicking|format('dddd')}}</div>
+                <div class="b" >{{datePicking|format('MMM')}}</div>
+                <div class="c" >{{datePicking|format('D')}}</div>
+                <div class="d" >{{datePicking|format('YYYY')}}</div>
               </div>
               <div class="days">
-                <div class="a" >{{now|format('MMMM YYYY')}}</div>
+                <div class="a" >{{datePicking|format('MMMM YYYY')}}</div>
                 <div class="b">
                   <template repeat="{{ day_of_the_week in days_of_the_week }}">
                     <span>{{day_of_the_week | firstLetter}}</span>
@@ -206,6 +206,7 @@
     };
 
     var scope = document.querySelector('template[is=auto-binding]');
+    scope.datePicking = moment();
     scope.days_of_the_week = moment.weekdaysMin();
     scope.days = Array();
     scope.notDays = Array();
@@ -218,7 +219,7 @@
     if (notdays >= 0) {
       scope.notDays[ notdays ] = "";
     }
-    for(i=1;i<=moment().daysInMonth();i++){
+    for(i=1;i<=moment(scope.datePicking).daysInMonth();i++){
         scope.days[i-1] = i;
     }
     scope.toggleDialog1 = function(e) {
