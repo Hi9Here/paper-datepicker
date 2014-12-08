@@ -188,6 +188,7 @@
       },
       dateClicked: function(e) {
         var element = e.originalTarget ? e.originalTarget : e.toElement;
+        debugger;
       }
     })
     moment.locale('en-gb');
@@ -208,6 +209,11 @@
     scope.days_of_the_week = moment.weekdaysMin();
     scope.days = Array();
     scope.notDays = Array();
+    scope.dateClicked = function(e) {
+      var element = e.originalTarget ? e.originalTarget : e.toElement;
+      scope.datePicking = moment(element.textContent, 'D')
+      debugger;
+    }
     var notdays = +moment(1,"D").format("d")- 1
     if (notdays >= 0) {
       scope.notDays[ notdays ] = "";
@@ -216,14 +222,11 @@
         scope.days[i-1] = i;
     }
     scope.toggleDialog1 = function(e) {
-        if (e.target.localName != 'button') {
-            return;
-        }
-        var d = e.target.querySelector('paper-action-dialog');
-        if (!d) {
-            return;
-        }
-        d.toggle();
+      var d = e.target.querySelector('paper-action-dialog');
+      if (!d) {
+        return;
+      }
+      d.toggle();
     };
   </script>
 </body>
