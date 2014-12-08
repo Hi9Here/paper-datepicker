@@ -12,6 +12,7 @@
     <link href="bower_components/paper-dialog/paper-dialog.html" rel="import">
     <link href="bower_components/paper-dialog/paper-action-dialog.html" rel="import">
     <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/core-icon/core-icon.html">
     <!-- not working link rel="import" href="bower_components/font-roboto/roboto.html" -->
     <link href="//fonts.googleapis.com/css?family=Roboto:400normal&amp;subset=all" rel="stylesheet" type="text/css">
     <style>
@@ -100,7 +101,7 @@
   <template is="auto-binding">
     <section on-tap="{{toggleDialog1}}">
       <paper-button raised role="button" tabindex="0">
-            {{datePicking|format("l")}}
+      {{datePicking|format("l")}}<core-icon icon="event" role="img" ></core-icon>
             <paper-action-dialog backdrop autoCloseDisabled>
               <div class="top">
                 <div class="a" >{{datePicking|format('dddd')}}</div>
