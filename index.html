@@ -16,72 +16,46 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:400normal&amp;subset=all" rel="stylesheet" type="text/css">
     <style>
       html /deep/ #scroller {
-        padding: 0;
-        background:#009688;
+        padding: 0; background:#009688;
       }
       html /deep/ paper-action-dialog .top {
-        color:#fff;
-        text-align:center;
+        color:#fff; text-align:center;
       }
       html .wide /deep/ paper-action-dialog .top {
-        float: left;
-        min-width: 300px;
+        float: left; min-width: 300px;
       }
       html /deep/ paper-action-dialog .top .a {
-        background:#00796b;
-        padding: 8px;
-        font-size:14px;
+        background:#00796b; padding: 8px; font-size:14px;
       }
       html /deep/ paper-action-dialog .top .b {
-        font-size:34px;
-        padding-top:10px;
-        text-transform: uppercase;
+        font-size:34px; padding-top:10px; text-transform: uppercase;
       }
       html /deep/ paper-action-dialog .top .c {
-        font-size:60px;
-        font-family:"Noto Sans";
+        font-size:60px; font-family:"Noto Sans";
       }
       html /deep/ paper-action-dialog .top .d {
-        font-size: 30px;
-        color: #8acfc8;
-        padding: 10px 0 10px;
+        font-size: 30px; color: #8acfc8; padding: 10px 0 10px;
       }
       html /deep/ paper-action-dialog .days {
-        background:#fff;
-        text-align:left;
-        padding:0 10px;
-        float: left;
-        width: 300px;
+        background:#fff; text-align:left; padding:0 10px; float: left; width: 300px;
       }
       html /deep/ paper-action-dialog .days .a {
-        font-size: 15px;
-        text-align:center;
-        font-weight: bold;
-        padding: 17px 0 1px;
+        font-size: 15px; text-align:center; font-weight: bold; padding: 17px 0 1px;
       }
       html /deep/ paper-action-dialog .days .b {
         font-size:14px;
       }
       html /deep/ paper-action-dialog .days span.today {
-        color:#fff;
-        background:#009688;
-        border-radius: 20px;
+        color:#fff; background:#009688; border-radius: 20px;
       }
       html /deep/ paper-action-dialog .days span {
-        width: 39px;
-        display: inline-block;
-        text-align: center;
-        height: 39px;
-        line-height: 39px;
+        width: 39px; display: inline-block; text-align: center; height: 39px; line-height: 39px;
       }
       html /deep/ paper-action-dialog .days .c {
-        font-size:14px;
-        margin-top: -21px;
+        font-size:14px; margin-top: -21px;
       }
       html /deep/ paper-action-dialog paper-button {
-        color: #009688;
-        padding: 10px;
-        min-width: 39px;
+        color: #009688; padding: 10px; min-width: 39px;
       }
       html /deep/ paper-action-dialog   {
         font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -112,7 +86,7 @@
                     <span></span>
                   </template>
                   <template repeat="{{ day in days }}">
-                    <span class="{{day | today}}">{{day}}</span>
+                    <span class="{{day | today}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
                   </template>
                 </div>
               </div>
@@ -124,7 +98,100 @@
   </template>
 
   <script>
+    Polymer("paper-datepicker", {
+      publish: {
+      // Defines the date-picker layout mode ('vertical' OR 'horizontal')
+      orientation: 'vertical',
+      //locales:
+
+      //af = Afrikaans
+      //sq = Albanian
+      //ar = Arabic
+      //ar-ma = Arabic (Morocco)
+      //ar-sa = Arabic (Saudi Arabia)
+      //hy-am = Armenian
+      //az = Azerbaijani
+      //id = Bahasa Indonesia
+      //ms-my = Bahasa Malayu
+      //eu = Basque
+      //be = Belarusian
+      //bn = Bengali
+      //bs = Bosnian
+      //br = Breton
+      //bg = Bulgarian
+      //my = Burmese
+      //ca = Catalan
+      //zh-cn = Chinese
+      //zh-tw = Chinese (Traditional)
+      //cv = Chuvash
+      //hr = Croatian
+      //cs = Czech
+      //da = Danish
+      //nl = Dutch
+      //en = English
+      //en-au = English (Australia)
+      //en-ca = English (Canada)
+      //en-gb = English (England)
+      //eo = Esperanto
+      //et = Estonian
+      //fo = Farose
+      //fi = Finnish
+      //fr = French
+      //fr-ca = French (Canada)
+      //gl = Galician
+      //ka = Georgian
+      //de = German
+      //de-at = German (Austria)
+      //el = Greek
+      //he = Hebrew
+      //hi = Hindi
+      //hu = Hungarian
+      //is = Icelandic
+      //it = Italian
+      //ja = Japanese
+      //km = Khmer (Cambodia)
+      //ko = Korean
+      //lv = Latvian
+      //lt = Lithuanian
+      //lb = Luxembourgish
+      //mk = Macedonian
+      //ml = Malayalam
+      //mr = Marathi
+      //ne = Nepalese
+      //nb = Norwegian
+      //nn = Norwegian Nynorsk
+      //fa = Persian
+      //pl = Polish
+      //pt = Portuguese
+      //pt-br = Portuguese (Brazil)
+      //ro = Romanian
+      //ru = Russian
+      //sr = Serbian
+      //sr-cyrl = Serbian Cyrillic
+      //sk = Slovak
+      //sl = Slovenian
+      //es = Spanish
+      //sv = Swedish
+      //tl-ph = Tagalog (Filipino)
+      //tzm = Tamaziɣt
+      //tzm-latn = Tamaziɣt Latin
+      //ta = Tamil
+      //th = Thai
+      //bo = Tibetan
+      //tr = Turkish
+      //uk = Ukrainian
+      //uz = Uzbek
+      //vi = Vietnamese
+      //cy = Welsh
+
+      locale: 'en-gb'
+      },
+      dateClicked: function(e) {
+        var element = e.originalTarget ? e.originalTarget : e.toElement;
+      }
+    })
     moment.locale('en-gb');
+
     PolymerExpressions.prototype.firstLetter = function(input) {
       return input[0];
     };
