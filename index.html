@@ -65,7 +65,7 @@
   <body unresolved>
   <template is="auto-binding">
     <section on-tap="{{toggleDialog1}}">
-        <button>
+      <paper-button raised role="button" tabindex="0">
             {{datePicking|format("l")}}
             <paper-action-dialog backdrop autoCloseDisabled>
               <div class="top">
@@ -81,7 +81,7 @@
                     <span>{{day_of_the_week | firstLetter}}</span>
                   </template>
                 </div>
-                <div class="c">
+                <div class="c d{{datePicking|format('D')}}">
                   <template repeat="{{ day in notDays }}">
                     <span></span>
                   </template>
@@ -93,7 +93,7 @@
               <paper-button affirmative>CANCEL</paper-button>
               <paper-button affirmative autofocus>OK</paper-button>
             </paper-action-dialog>
-        </button>
+        </paper-button>
     </section>
   </template>
 
@@ -197,14 +197,13 @@
       return input[0];
     };
     PolymerExpressions.prototype.today = function(input) {
-      if ( moment(input ,"D").isSame(moment(), "day" )) {
+      if ( moment(input ,"D").isSame(moment(scope.datePicking), "day" )) {
         return "today";
       }
     };
     PolymerExpressions.prototype.format = function(input, letter) {
         return moment(input).format(letter);
     };
-
     var scope = document.querySelector('template[is=auto-binding]');
     scope.datePicking = moment();
     scope.days_of_the_week = moment.weekdaysMin();
