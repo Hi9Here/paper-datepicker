@@ -7,8 +7,8 @@
 <link href="//fonts.googleapis.com/css?family=Roboto:400normal&amp;subset=all" rel="stylesheet" type="text/css">
 
 <polymer-element name="paper-datepicker">
-  <template>
-    <style>
+  <template id="paper-datepicker">
+    <style notWorking >
       /deep/ #scroller {
         padding: 0; background:#009688;
       }
@@ -117,18 +117,20 @@
             </div>
             <paper-button affirmative>CANCEL</paper-button>
             <paper-button affirmative autofocus on-click="{{datePicked = datePicking}}">OK</paper-button>
+            E
           </paper-action-dialog>
       </paper-button>
   </template>
 
   <script>
     moment.locale('en-gb');
+var scope;
     Polymer("paper-datepicker", {
       publish: {
-        days:[],
+        datePicked:{},
+        days:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27],
         notDays: [],
         locale: 'en-gb',
-        datePicked:  moment(),
       // Defines the date-picker layout mode ('vertical' OR 'horizontal')
         orientation: 'vertical',
       //locales:
@@ -138,7 +140,7 @@
       },
       dateClicked: function(e) {
         var element = e.originalTarget ? e.originalTarget : e.toElement;
-        this.datePicking = moment(element.textContent, 'D')
+        scope.datePicking = moment(element.textContent, 'D')
       },
       datePicking: moment(),
       days_of_the_week: moment.weekdaysMin(),
@@ -147,23 +149,26 @@
         if (!d) {
           return;
         }
-        var notdays = +moment(1,"D").format("d")-1
+        d.toggle();
+      },
+      ready: function() {
+        var notdays = +moment(1,"D").format("d")-1;
         if (notdays >= 0) {
           this.notDays[ notdays ] = "";
         }
         for(i=1;i<=moment(this.datePicking).daysInMonth();i++){
           this.days[i-1] = i;
         }
-        d.toggle();
+        this.datePicking = moment();
+        this.datePicked = moment();
+        scope = this;
       }
-    })
-    moment.locale('en-gb');
-
+    });
     PolymerExpressions.prototype.firstLetter = function(input) {
       return input[0];
     };
     PolymerExpressions.prototype.today = function(input) {
-      if ( moment(input ,"D").isSame(moment(scope.datePicking), "day" )) {
+      if ( moment(input ,"D").isSame(moment(), "day" )) {
         return "today";
       }
     };
