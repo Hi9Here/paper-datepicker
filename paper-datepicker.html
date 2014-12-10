@@ -91,7 +91,7 @@
       {{datePicked|format("l")}}
       <core-icon icon="event" aria-label="event" role="img">
         <svg viewBox="0 0 24 24" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" style="pointer-events: none; display: block;" fit=""><g><path d="M17 12h-5v5h5v-5zm-1-11v2h-8v-2h-2v2h-1c-1.11 0-1.99.9-1.99 2l-.01 14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2h-1v-2h-2zm3 18h-14v-11h14v11z"></path></g></svg></core-icon>
-          <paper-action-dialog class="wide" backdrop autoCloseDisabled>
+        <paper-action-dialog class="{{orientation}}" backdrop autoCloseDisabled>
 
             <div class="top">
               <div class="a">{{datePicking|format('dddd')}}</div>
@@ -116,8 +116,7 @@
               </div>
             </div>
             <paper-button affirmative>CANCEL</paper-button>
-            <paper-button affirmative autofocus on-click="{{datePicked = datePicking}}">OK</paper-button>
-            E
+            <paper-button affirmative autofocus on-click="{{set_datePicked}}">OK</paper-button>
           </paper-action-dialog>
       </paper-button>
   </template>
@@ -144,7 +143,10 @@ var scope;
       },
       datePicking: moment(),
       days_of_the_week: moment.weekdaysMin(),
-      toggleDialog1 : function(e) {
+      set_datePicked: function() { 
+        this.datePicked = this.datePicking;
+      },
+      toggleDialog1: function(e) {
         var d = e.target.querySelector('paper-action-dialog');
         if (!d) {
           return;
