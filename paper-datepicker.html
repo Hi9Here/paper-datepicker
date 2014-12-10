@@ -99,7 +99,11 @@
               <div class="d">{{datePicking|format('YYYY')}}</div>
             </div>
             <div class="days d{{datePicking|format('D')}}">
-              <div class="a" >{{datePicking|format('MMMM YYYY')}}</div>
+              <div class="a" >
+                <core-icon icon="arrow-back" role="img"></core-icon>
+                <span flex>{{datePicking|format('MMMM YYYY')}}</span>
+                <core-icon icon="arrow-forward" role="img"></core-icon>
+              </div>
               <div class="b">
                 <template repeat="{{ day_of_the_week in days_of_the_week }}">
                   <span>{{day_of_the_week | firstLetter}}</span>
