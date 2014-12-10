@@ -179,7 +179,7 @@ var scope;
       return input[0];
     };
     PolymerExpressions.prototype.today = function(input) {
-      if ( moment(input ,"D").isSame(moment(), "day" )) {
+      if (moment().startOf('month').add(input ,"days").isSame(moment(), "day" )) {
         return "today";
       }
     };
