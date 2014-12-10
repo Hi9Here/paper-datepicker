@@ -185,8 +185,10 @@ var scope;
       return input[0];
     };
     PolymerExpressions.prototype.today = function(input) {
-      if (moment().startOf('month').add(+input - 1 ,"days").isSame(moment(), "day" )) {
-        return "today";
+      if (moment(this.datePicking).isSame(moment(), "month" )) {
+        if (moment(this.datePicking).startOf('month').add(+input - 1 ,"days").isSame(moment(), "day" )) {
+          // dropping as buggy return "today";
+        }
       }
     };
     PolymerExpressions.prototype.format = function(input, letter) {
