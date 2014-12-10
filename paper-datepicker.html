@@ -100,9 +100,9 @@
             </div>
             <div class="days d{{datePicking|format('D')}}">
               <div class="a" >
-                <core-icon on-click="{{backMonth}}" style="color:#aaa;float:left" icon="arrow-back" role="img"></core-icon>
+                <core-icon on-click="{{backMonth}}" style="color:#aaa;" icon="arrow-back" role="img"></core-icon>
                 {{datePicking|format('MMMM YYYY')}}
-                <core-icon on-click="{{forwardMonth}}" style="color:#aaa;float:right" icon="arrow-forward" role="img"></core-icon>
+                <core-icon on-click="{{forwardMonth}}" style="color:#aaa;" icon="arrow-forward" role="img"></core-icon>
               </div>
               <div class="b">
                 <template repeat="{{ day_of_the_week in days_of_the_week }}">
@@ -155,7 +155,7 @@ var scope;
       },
       dateClicked: function(e) {
         var element = e.originalTarget ? e.originalTarget : e.toElement;
-        scope.datePicking = moment(element.textContent, 'D')
+        scope.datePicking = moment(this.datePicking).startOf('month').add(+element.textContent - 1 ,"days");
       },
       datePicking: moment(),
       days_of_the_week: moment.weekdaysMin(),
