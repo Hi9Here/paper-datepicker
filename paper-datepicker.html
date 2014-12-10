@@ -110,10 +110,10 @@
                 </template>
               </div>
               <div class="c">
-                <template repeat="{{ day in notDays }}">
+                <template repeat="{{ day in notDays(datePicking) }}">
                   <span></span>
                 </template>
-                <template repeat="{{ day in days }}">
+                <template repeat="{{ day in days(datePicking) }}">
                   <span class="{{day | today}} d{{day}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
                 </template>
               </div>
@@ -130,8 +130,6 @@ var scope;
     Polymer("paper-datepicker", {
       publish: {
         datePicked:{},
-        days:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27],
-        notDays: [],
         locale: 'en-gb',
       // Defines the date-picker layout mode ('vertical' OR 'horizontal')
         orientation: 'vertical',
@@ -139,6 +137,21 @@ var scope;
 
       // af = Afrikaans,sq = Albanian,ar = Arabic,ar-ma = Arabic (Morocco),ar-sa = Arabic (Saudi Arabia),hy-am = Armenian,az = Azerbaijani,id = Bahasa Indonesia,ms-my = Bahasa Malayu,eu = Basque,be = Belarusian,bn = Bengali,bs = Bosnian,br = Breton,bg = Bulgarian,my = Burmese,ca = Catalan,zh-cn = Chinese,zh-tw = Chinese (Traditional),cv = Chuvash,hr = Croatian,cs = Czech,da = Danish,nl = Dutch,en = English,en-au = English (Australia),en-ca = English (Canada),en-gb = English (England),eo = Esperanto,et = Estonian,fo = Farose,fi = Finnish,fr = French,fr-ca = French (Canada),gl = Galician,ka = Georgian,de = German,de-at = German (Austria),el = Greek,he = Hebrew,hi = Hindi,hu = Hungarian,is = Icelandic,it = Italian,ja = Japanese,km = Khmer (Cambodia),ko = Korean,lv = Latvian,lt = Lithuanian,lb = Luxembourgish,mk = Macedonian,ml = Malayalam,mr = Marathi,ne = Nepalese,nb = Norwegian,nn = Norwegian Nynorsk,fa = Persian,pl = Polish,pt = Portuguese,pt-br = Portuguese (Brazil),ro = Romanian,ru = Russian,sr = Serbian,sr-cyrl = Serbian Cyrillic,sk = Slovak,sl = Slovenian,es = Spanish,sv = Swedish,tl-ph = Tagalog (Filipino),tzm = Tamaziɣt,tzm-latn = Tamaziɣt Latin,ta = Tamil,th = Thai,bo = Tibetan,tr = Turkish,uk = Ukrainia,uz = Uzbe,vi = Vietnamese,cy = Welsh
 
+      },
+      days: function() {
+        var days = [];
+        for(i=1;i<=moment(this.datePicking).daysInMonth();i++){
+          days[i-1] = i;
+        }
+        return days;
+      },
+      notDays: function() {
+        var notdays = +moment(this.datePicking).startOf('month').format("d")-1;
+        var notDays = [];
+        if (notdays >= 0) {
+          notDays[ notdays ] = "";
+        }
+        return notDays;
       },
       dateClicked: function(e) {
         var element = e.originalTarget ? e.originalTarget : e.toElement;
@@ -163,13 +176,6 @@ var scope;
         d.toggle();
       },
       ready: function() {
-        var notdays = +moment(1,"D").format("d")-1;
-        if (notdays >= 0) {
-          this.notDays[ notdays ] = "";
-        }
-        for(i=1;i<=moment(this.datePicking).daysInMonth();i++){
-          this.days[i-1] = i;
-        }
         this.datePicking = moment();
         this.datePicked = moment();
         scope = this;
@@ -179,7 +185,7 @@ var scope;
       return input[0];
     };
     PolymerExpressions.prototype.today = function(input) {
-      if (moment().startOf('month').add(input ,"days").isSame(moment(), "day" )) {
+      if (moment().startOf('month').add(+input - 1 ,"days").isSame(moment(), "day" )) {
         return "today";
       }
     };
