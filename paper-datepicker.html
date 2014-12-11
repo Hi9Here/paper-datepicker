@@ -105,17 +105,17 @@
               </div>
               <div class="b">
                 <template repeat="{{ day_of_the_week in days_of_the_week }}">
-                  <span style="width:39px;display:inline-block;text-align:center;height:39px;line-height:39px">
+                  <span>
                     {{day_of_the_week | firstLetter}}
                   </span>
                 </template>
               </div>
               <div class="c">
                 <template repeat="{{ day in notDays(datePicking) }}">
-                  <span style="width:39px;display:inline-block;text-align:center;height:39px;line-height:39px"></span>
+                  <span></span>
                 </template>
                 <template repeat="{{ day in days(datePicking) }}">
-                  <span style="width:39px;display:inline-block;text-align:center;height:39px;line-height:39px" class="{{day | today}} d{{day}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
+                  <span class="{{day | today}} d{{day}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
                 </template>
               </div>
             </div>
