@@ -9,89 +9,88 @@
 <polymer-element name="paper-datepicker">
   <template id="paper-datepicker">
     <style notWorking >
-      /deep/ #scroller {
+      #scroller {
         padding: 0; background:#009688;
       }
-      /deep/ paper-action-dialog .top {
+      paper-action-dialog .top {
         color:#fff; text-align:center;
       }
-      /deep/ paper-action-dialog.wide .top {
+      paper-action-dialog.wide .top {
         float: left; min-width: 300px;
       }
-      /deep/ paper-action-dialog .top .a {
+      paper-action-dialog .top .a {
         background:#00796b; padding: 8px; font-size:14px;
       }
-      /deep/ paper-action-dialog .top .b {
+      paper-action-dialog .top .b {
         font-size:34px; padding-top:10px; text-transform: uppercase;
       }
-      /deep/ paper-action-dialog .top .c {
+      paper-action-dialog .top .c {
         font-size:60px;
       }
-      /deep/ paper-action-dialog .top .d {
+      paper-action-dialog .top .d {
         font-size: 30px; color: #8acfc8; padding: 10px 0 10px;
       }
-      /deep/ paper-action-dialog .days {
+      paper-action-dialog .days {
         background:#fff; text-align:left; padding:0 10px; float: left; width: 300px;
       }
-      /deep/ paper-action-dialog .days .a {
+      paper-action-dialog .days .a {
         font-size: 15px; text-align:center; font-weight: bold; padding: 17px 0 1px;
       }
-      /deep/ paper-action-dialog .days .b { font-size:14px; }
-      /deep/ paper-action-dialog .days span.today {
+      paper-action-dialog .days .b { font-size:14px; }
+      paper-action-dialog .days span.today {
         color:#fff; background:#B0B0B0; border-radius: 20px;
       }
-      /deep/ .days.d1 span.d1,
-      /deep/ .days.d2 span.d2,
-      /deep/ .days.d3 span.d3,
-      /deep/ .days.d4 span.d4,
-      /deep/ .days.d5 span.d5,
-      /deep/ .days.d6 span.d6,
-      /deep/ .days.d7 span.d7,
-      /deep/ .days.d8 span.d8,
-      /deep/ .days.d9 span.d9,
-      /deep/ .days.d10 span.d10,
-      /deep/ .days.d11 span.d11,
-      /deep/ .days.d12 span.d12,
-      /deep/ .days.d13 span.d13,
-      /deep/ .days.d14 span.d14,
-      /deep/ .days.d15 span.d15,
-      /deep/ .days.d16 span.d16,
-      /deep/ .days.d17 span.d17,
-      /deep/ .days.d18 span.d18,
-      /deep/ .days.d19 span.d19,
-      /deep/ .days.d20 span.d20,
-      /deep/ .days.d21 span.d21,
-      /deep/ .days.d22 span.d22,
-      /deep/ .days.d23 span.d23,
-      /deep/ .days.d24 span.d24,
-      /deep/ .days.d25 span.d25,
-      /deep/ .days.d26 span.d26,
-      /deep/ .days.d27 span.d27,
-      /deep/ .days.d28 span.d28,
-      /deep/ .days.d29 span.d29,
-      /deep/ .days.d30 span.d30,
-      /deep/ .days.d31 span.d31 {
+      .days.d1 span.d1,
+      .days.d2 span.d2,
+      .days.d3 span.d3,
+      .days.d4 span.d4,
+      .days.d5 span.d5,
+      .days.d6 span.d6,
+      .days.d7 span.d7,
+      .days.d8 span.d8,
+      .days.d9 span.d9,
+      .days.d10 span.d10,
+      .days.d11 span.d11,
+      .days.d12 span.d12,
+      .days.d13 span.d13,
+      .days.d14 span.d14,
+      .days.d15 span.d15,
+      .days.d16 span.d16,
+      .days.d17 span.d17,
+      .days.d18 span.d18,
+      .days.d19 span.d19,
+      .days.d20 span.d20,
+      .days.d21 span.d21,
+      .days.d22 span.d22,
+      .days.d23 span.d23,
+      .days.d24 span.d24,
+      .days.d25 span.d25,
+      .days.d26 span.d26,
+      .days.d27 span.d27,
+      .days.d28 span.d28,
+      .days.d29 span.d29,
+      .days.d30 span.d30,
+      .days.d31 span.d31 {
         color:#fff; background:#009688; border-radius: 20px;,
       }
-      /deep/ paper-action-dialog .days span {
+      paper-action-dialog .days span {
         width:39px;display:inline-block;text-align:center;height:39px;line-height:39px;
       }
-      /deep/ paper-action-dialog .days .c {
+      paper-action-dialog .days .c {
         font-size:14px;margin-top:-21px;
       }
-      /deep/ paper-action-dialog paper-button {
+      paper-action-dialog paper-button {
         color:#009688;padding:10px;min-width:39px;
       }
-      /deep/ paper-action-dialog   {
+      paper-action-dialog {
         font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
-      /deep/ #actions { padding: 0; }
+      #actions { padding: 0;}
     </style>
-    <paper-button on-load="{{setup}}" on-tap="{{toggleDialog1}}" raised role="button" tabindex="0">
+    <paper-button on-load="{{setup}}" on-click="{{toggleDialog1}}" raised role="button" tabindex="0">
       {{datePicked|format("l")}}
-      <core-icon icon="event" aria-label="event" role="img"></core-icon>
-        <paper-action-dialog class="{{orientation}}" backdrop autoCloseDisabled>
-
+      <core-icon on-click="{{toggleDialog1}}" icon="event" aria-label="event" role="img"></core-icon>
+        <paper-action-dialog id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
             <div class="top">
               <div class="a">{{datePicking|format('dddd')}}</div>
               <div class="b">{{datePicking|format('MMM')}}</div>
@@ -118,7 +117,7 @@
                 </template>
               </div>
             </div>
-            <paper-button affirmative>CANCEL</paper-button>
+            <paper-button affirmative on-click="{{toggle}}">CANCEL</paper-button>
             <paper-button affirmative autofocus on-click="{{set_datePicked}}">OK</paper-button>
           </paper-action-dialog>
       </paper-button>
@@ -167,9 +166,10 @@ var scope;
       },
       set_datePicked: function() { 
         this.datePicked = this.datePicking;
+        toggleDialog1();
       },
       toggleDialog1: function(e) {
-        var d = e.target.querySelector('paper-action-dialog');
+        var d = e.target.querySelector('#datePicker');
         if (!d) {
           return;
         }
