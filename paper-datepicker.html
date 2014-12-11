@@ -8,8 +8,8 @@
 
 <polymer-element name="paper-datepicker">
   <template id="paper-datepicker">
-    <style notWorking >
-      #scroller {
+    <style shim-shadowdom>
+      paper-action-dialog::shodow #scroller {
         padding: 0; background:#009688;
       }
       paper-action-dialog .top {
@@ -82,22 +82,19 @@
       paper-action-dialog paper-button {
         color:#009688;padding:10px;min-width:39px;
       }
-      paper-action-dialog {
-        font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
       #actions { padding: 0;}
     </style>
     <paper-button on-load="{{setup}}" on-click="{{toggleDialog1}}" raised role="button" tabindex="0">
       {{datePicked|format("l")}}
       <core-icon on-click="{{toggleDialog1}}" icon="event" aria-label="event" role="img"></core-icon>
-        <paper-action-dialog id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
+        <paper-action-dialog style="font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif" id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
             <div class="top">
               <div class="a">{{datePicking|format('dddd')}}</div>
               <div class="b">{{datePicking|format('MMM')}}</div>
               <div class="c">{{datePicking|format('D')}}</div>
               <div class="d">{{datePicking|format('YYYY')}}</div>
             </div>
-            <div class="days d{{datePicking|format('D')}}">
+            <div style="background:#fff;text-align:left;padding:0 10px;float:left;width:300px;" class="days d{{datePicking|format('D')}}">
               <div class="a" >
                 <core-icon on-click="{{backMonth}}" style="color:#aaa;" icon="arrow-back" role="img"></core-icon>
                 {{datePicking|format('MMMM YYYY')}}
@@ -105,19 +102,21 @@
               </div>
               <div class="b">
                 <template repeat="{{ day_of_the_week in days_of_the_week }}">
-                  <span>{{day_of_the_week | firstLetter}}</span>
+                  <span style="width:39px;display:inline-block;text-align:center;height:39px;line-height:39px">
+                    {{day_of_the_week | firstLetter}}
+                  </span>
                 </template>
               </div>
               <div class="c">
                 <template repeat="{{ day in notDays(datePicking) }}">
-                  <span></span>
+                  <span style="width:39px;display:inline-block;text-align:center;height:39px;line-height:39px"></span>
                 </template>
                 <template repeat="{{ day in days(datePicking) }}">
-                  <span class="{{day | today}} d{{day}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
+                  <span style="width:39px;display:inline-block;text-align:center;height:39px;line-height:39px" class="{{day | today}} d{{day}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
                 </template>
               </div>
             </div>
-            <paper-button affirmative on-click="{{toggle}}">CANCEL</paper-button>
+            <paper-button affirmative>CANCEL</paper-button>
             <paper-button affirmative autofocus on-click="{{set_datePicked}}">OK</paper-button>
           </paper-action-dialog>
       </paper-button>
@@ -125,7 +124,7 @@
 
   <script>
     moment.locale('en-gb');
-var scope;
+    var scope;
     Polymer("paper-datepicker", {
       publish: {
         datePicked:{},
