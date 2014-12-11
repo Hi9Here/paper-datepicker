@@ -1,6 +1,9 @@
 #Paper Datepicker
 *Date Picker based on Material Design and the design spec*
 
+#install
+bower install paper-datepicker
+
 This to be used as a Full Screen dialogue on a Desktop as well as Mobile
 
 [google.com/design/spec/components/pickers.html](http://www.google.com/design/spec/components/pickers.html)
