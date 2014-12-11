@@ -5,9 +5,9 @@
   "authors": [
     "marcus hitchins <marcus7777@gmail.com>"
   ],
-  "description": "testing out",
+  "description": "Date Picker based on Material Design and the design spec",
   "keywords": [
-    "testing"
+    "paper","datepicker"
   ],
   "license": "MIT",
   "dependencies": {
