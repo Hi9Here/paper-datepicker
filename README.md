@@ -19,13 +19,6 @@ We are trying to use the styling from the Polymer Demo calculator for the dates.
 
 which follows these [Paper Button Material Design Principles](http://www.google.com/design/spec/components/buttons.html)
 
-
-###Paper Input
-
-[github.com/Polymer/paper-input](https://github.com/Polymer/paper-input)
-
-which follows these [Paper Input Material Design Principles](http://www.google.com/design/spec/components/text-fields.html#text-fields-single-line-text-field)
-
 ###Paper Full Screen Dialog
 
 [github.com/Polymer/paper-dialog](https://github.com/Polymer/paper-dialog)
