@@ -75,6 +75,9 @@
       html /deep/ paper-action-dialog .days span {
         width: 39px; display: inline-block; text-align: center; height: 39px; line-height: 39px;cursor:pointer
       }
+      html /deep/ paper-action-dialog .days span.not-day {
+        cursor:default
+      }
       html /deep/ paper-action-dialog .days .c {
         font-size:14px; margin-top: -21px;
       }
@@ -112,7 +115,7 @@
               </div>
               <div class="c">
                 <template repeat="{{ day in notDays(datePicking) }}">
-                  <span></span>
+                  <span class="not-day"></span>
                 </template>
                 <template repeat="{{ day in days(datePicking) }}">
                   <span class="{{day | today}} d{{day}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
