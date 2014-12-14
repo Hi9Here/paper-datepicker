@@ -15,7 +15,7 @@
         color:#fff; text-align:center;
       }
       html /deep/ paper-action-dialog.wide .top {
-        float: left; min-width: 300px;
+        float: left; min-width: 285px;
       }
       html /deep/ paper-action-dialog .top .a {
         background:#00796b; padding: 8px; font-size:14px;
@@ -94,14 +94,14 @@
     <paper-button on-load="{{setup}}" on-click="{{toggleDialog1}}" raised role="button" tabindex="0">
       {{datePicked|format("l")}}
       <core-icon on-click="{{toggleDialog1}}" icon="event" aria-label="event" role="img"></core-icon>
-        <paper-action-dialog style="font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif" id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
+        <paper-action-dialog style="font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif" id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
             <div class="top">
               <div class="a">{{datePicking|format('dddd')}}</div>
               <div class="b">{{datePicking|format('MMM')}}</div>
               <div class="c">{{datePicking|format('D')}}</div>
               <div class="d">{{datePicking|format('YYYY')}}</div>
             </div>
-            <div style="background:#fff;text-align:left;padding:0 10px;float:left;width:300px;" class="days d{{datePicking|format('D')}}">
+            <div class="days d{{datePicking|format('D')}}">
               <div class="a" >
                 <core-icon on-click="{{backMonth}}" style="color:#aaa;" icon="arrow-back" role="img"></core-icon>
                 {{datePicking|format('MMMM YYYY')}}
