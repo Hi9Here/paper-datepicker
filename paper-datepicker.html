@@ -134,7 +134,7 @@
     Polymer("paper-datepicker", {
       publish: {
         datePicked:{},
-        locale: 'fr',
+        locale: '',
       // Defines the date-picker layout mode ('vertical' OR 'horizontal')
         orientation: 'vertical',
       //locales:
@@ -167,7 +167,7 @@
       datePicking: globalLocale,
       days_of_the_week: function() {
         moment.locale(globalLocale.locale());
-        moment().weekdaysMin();
+        return moment().weekdaysMin();
       },
       backMonth: function() {
         moment.locale(globalLocale.locale());
