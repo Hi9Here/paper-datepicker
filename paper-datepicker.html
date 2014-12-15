@@ -130,11 +130,11 @@
   </template>
 
   <script>
-    var scope;
+    var scope, globalLocale = moment();
     Polymer("paper-datepicker", {
       publish: {
         datePicked:{},
-        locale: 'en-gb',
+        locale: 'fr',
       // Defines the date-picker layout mode ('vertical' OR 'horizontal')
         orientation: 'vertical',
       //locales:
@@ -144,12 +144,14 @@
       },
       days: function() {
         var days = [];
+        moment.locale(globalLocale.locale());
         for(i=1;i<=moment(this.datePicking).daysInMonth();i++){
           days[i-1] = i;
         }
         return days;
       },
       notDays: function() {
+        moment.locale(globalLocale.locale());
         var notdays = +moment(this.datePicking).startOf('month').format("d")-1;
         var notDays = [];
         if (notdays >= 0) {
@@ -158,15 +160,21 @@
         return notDays;
       },
       dateClicked: function(e) {
+        moment.locale(globalLocale.locale());
         var element = e.originalTarget ? e.originalTarget : e.toElement;
         scope.datePicking = moment(this.datePicking).startOf('month').add(+element.textContent - 1 ,"days");
       },
-      datePicking: moment(),
-      days_of_the_week: moment.weekdaysMin(),
+      datePicking: globalLocale,
+      days_of_the_week: function() {
+        moment.locale(globalLocale.locale());
+        moment().weekdaysMin();
+      },
       backMonth: function() {
+        moment.locale(globalLocale.locale());
         this.datePicking = moment(this.datePicking).subtract(1, 'months');
       },
       forwardMonth: function() {
+        moment.locale(globalLocale.locale());
         this.datePicking = moment(this.datePicking).add(1, 'months');
       },
       set_datePicked: function() { 
@@ -181,9 +189,9 @@
         d.toggle();
       },
       ready: function() {
+        moment.locale(globalLocale.locale(this.locale));
         this.datePicking = moment();
         this.datePicked = moment();
-        moment.locale(this.locale);
         scope = this;
       }
     });
@@ -191,6 +199,7 @@
       return input[0];
     };
     PolymerExpressions.prototype.today = function(input) {
+      moment.locale(globalLocale.locale());
       if (moment(this.datePicking).isSame(moment(), "month" )) {
         if (moment(this.datePicking).startOf('month').add(+input - 1 ,"days").isSame(moment(), "day" )) {
           // dropping as buggy return "today";
@@ -198,6 +207,7 @@
       }
     };
     PolymerExpressions.prototype.format = function(input, letter) {
+        moment.locale(globalLocale.locale());
         return moment(input).format(letter);
     };
   </script>
