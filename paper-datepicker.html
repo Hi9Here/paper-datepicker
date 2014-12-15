@@ -6,7 +6,7 @@
 <link rel="import" href="../core-icons/core-icons.html">
 <link href="//fonts.googleapis.com/css?family=Roboto:400normal&amp;subset=all" rel="stylesheet" type="text/css">
 
-<polymer-element name="paper-datepicker" attributes="datePicked locale orientatation">
+<polymer-element name="paper-datepicker" attributes="datePicked formatDate locale orientatation">
     <style shim-shadowdom>
       html /deep/ #scroller {
         padding: 0; background:#009688;
@@ -36,7 +36,7 @@
       html /deep/ paper-action-dialog .days .a {
         font-size: 12px; text-align:center; font-weight: bold; padding: 17px 0 1px;
       }
-      html /deep/ paper-action-dialog .days .b { font-size:12px;text-transform: uppercase}
+      html /deep/ paper-action-dialog .days .b { font-size:12px; }
       html /deep/ paper-action-dialog .days span.today {
         color:#fff; background:#B0B0B0; border-radius: 20px;
       }
@@ -91,10 +91,10 @@
       html /deep/ #actions { padding: 0; }
     </style>
   <template id="paper-datepicker">
-    <paper-button on-load="{{setup}}" on-click="{{toggleDialog1}}" raised role="button" tabindex="0">
-      {{datePicked|format("l")}}
-      <core-icon on-click="{{toggleDialog1}}" icon="event" aria-label="event" role="img"></core-icon>
-        <paper-action-dialog style="font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif" id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
+    <paper-button on-load="{{setup}}" on-click="{{toggleDatePicker}}" raised role="button" tabindex="0">
+    {{datePicked|format()}}
+      <core-icon on-click="{{toggleDatePicker}}" icon="event" aria-label="event" role="img"></core-icon>
+        <paper-action-dialog id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
             <div class="top">
               <div class="a">{{datePicking|format('dddd')}}</div>
               <div class="b">{{datePicking|format('MMM')}}</div>
@@ -130,11 +130,12 @@
   </template>
 
   <script>
-    var scope, globalLocale = moment();
+    var scope, formatDate, globalLocale = moment();
     Polymer("paper-datepicker", {
       publish: {
         datePicked:{},
         locale: '',
+        formatDate: 'l',
       // Defines the date-picker layout mode ('vertical' OR 'horizontal')
         orientation: 'vertical',
       //locales:
@@ -155,7 +156,7 @@
         var notdays = +moment(this.datePicking).startOf('month').format("d")-1;
         var notDays = [];
         if (notdays >= 0) {
-          notDays[ notdays ] = "";
+          notDays[notdays] = "";
         }
         return notDays;
       },
@@ -176,9 +177,9 @@
       },
       set_datePicked: function() { 
         this.datePicked = this.datePicking;
-        toggleDialog1();
+        toggleDatePicker();
       },
-      toggleDialog1: function(e) {
+      toggleDatePicker: function(e) {
         var d = e.target.querySelector('#datePicker');
         if (!d) {
           return;
@@ -190,6 +191,7 @@
         this.datePicking = moment();
         this.datePicked = moment();
         this.days_of_the_week = moment.weekdays();
+        formatDate = this.formatDate;
         scope = this;
       }
     });
@@ -206,6 +208,9 @@
     };
     PolymerExpressions.prototype.format = function(input, letter) {
         moment.locale(globalLocale.locale());
+        if (letter == null) {
+          letter = formatDate;
+        }
         return moment(input).format(letter);
     };
   </script>
