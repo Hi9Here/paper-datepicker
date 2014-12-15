@@ -165,10 +165,7 @@
         scope.datePicking = moment(this.datePicking).startOf('month').add(+element.textContent - 1 ,"days");
       },
       datePicking: globalLocale,
-      days_of_the_week: function() {
-        moment.locale(globalLocale.locale());
-        return moment().weekdaysMin();
-      },
+      days_of_the_week: [],
       backMonth: function() {
         moment.locale(globalLocale.locale());
         this.datePicking = moment(this.datePicking).subtract(1, 'months');
@@ -192,6 +189,7 @@
         moment.locale(globalLocale.locale(this.locale));
         this.datePicking = moment();
         this.datePicked = moment();
+        this.days_of_the_week = moment.weekdays();
         scope = this;
       }
     });
