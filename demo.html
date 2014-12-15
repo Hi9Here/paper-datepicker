@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -10,20 +9,19 @@
     <link rel="import" href="bower_components/polymer/polymer.html" />
     <link rel="import" href="bower_components/paper-datepicker/paper-datepicker.html" />
 
-    <title>Paper-datepicker dome</title>
+    <title>Paper-datepicker demo</title>
   </head>
   <body unresolved>
     <name-tag></name-tag>
   </body>
   <polymer-element name="name-tag">
     <template>
-      <paper-datepicker datePicked="{{datePicked}}" ></paper-datepicker> </br>
-      </br>
-      Your can format with { { datePicked|format("dddd") }}   {{datePicked|format("dddd")}}</br>
-                      with { { datePicked|format("llll") }}   {{datePicked|format("llll")}}</br>
-                      with { { datePicked|format("ll") }}     {{datePicked|format("ll")}}</br>
-                      with { { datePicked|format("dddd l") }} {{datePicked|format("dddd l")}}</br>
-      as <a href="https://momentjs.com/docs/#/displaying/"> see the momentjs docs </a>
+      <paper-datepicker locale="en-gb" formatDate="ll" datePicked="{{datePicked}}" ></paper-datepicker> </br>
+Your can format with { {datePicked|format("dddd")}} {{datePicked|format("dddd")}}</br>
+with { {datePicked|format("llll")}} {{datePicked|format("llll")}}</br>
+with { {datePicked|format("ll")}} {{datePicked|format("ll")}}</br>
+with { {datePicked|format("dddd l")}} {{datePicked|format("dddd l")}}</br>
+as <a href="http://momentjs.com/docs/">See the momentjs docs</a>
     </template>
     <script>
       Polymer('name-tag', {
