@@ -2,7 +2,11 @@
 *Date Picker based on Material Design and the design spec*
 
 #install
-bower install paper-datepicker
+bower init
+bower install --save paper-datepicker
+cp bower_components/paper-datepicker/demo.html ./index.html
+python -m SimpleHTTPServer
+
 
 This to be used as a Full Screen dialogue on a Desktop as well as Mobile
 
