@@ -20,7 +20,7 @@ python -m http.server
 
 Test out the web server by loading the finished version of the project. For example:
 
-http://localhost:8000/demo.html/
+http://localhost:8000
 
 URLs in this tutorial assume your local server is listening on port 8000. If you’re using a different port, substitute the port you’re using.
 
