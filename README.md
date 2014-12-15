@@ -8,7 +8,21 @@ bower install --save paper-datepicker
 
 cp bower_components/paper-datepicker/demo.html ./index.html
 
+While you’re working, you’ll need a basic HTTP server to serve your pages. If you have Python installed, you can run one of the following commands in the top level of the starter project.
+
+###Python 2.x:
+
 python -m SimpleHTTPServer
+
+###Python 3.x:
+
+python -m http.server
+
+Test out the web server by loading the finished version of the project. For example:
+
+http://localhost:8000/demo.html/
+
+URLs in this tutorial assume your local server is listening on port 8000. If you’re using a different port, substitute the port you’re using.
 
 
 This to be used as a Full Screen dialogue on a Desktop as well as Mobile
