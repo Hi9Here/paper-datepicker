@@ -3,8 +3,11 @@
 
 #install
 bower init
+
 bower install --save paper-datepicker
+
 cp bower_components/paper-datepicker/demo.html ./index.html
+
 python -m SimpleHTTPServer
 
 
