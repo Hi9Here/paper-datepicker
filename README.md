@@ -29,7 +29,7 @@ This to be used as a Full Screen dialogue on a Desktop as well as Mobile
 
 [google.com/design/spec/components/pickers.html](http://www.google.com/design/spec/components/pickers.html)
 
-This is an extension of the Paper Input or Paper Button component with (Moment.js](https://github.com/moment/moment).
+This is an extension of the Paper Input or Paper Button component with [Moment.js](https://github.com/moment/moment).
 We have used for this example the Paper Button. All this using the Paper Full Screen Dialog experience of dominating a page so only one decision can be made.
 
 We are trying to use the styling from the Polymer Demo calculator for the dates.
