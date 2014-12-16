@@ -193,11 +193,7 @@
         }
       },
       toggleDatePicker: function(e) {
-        var d = e.target.querySelector('#datePicker');
-        if (!d) {
-          return;
-        }
-        d.toggle();
+        this.$.datePicker.toggle();
       },
       ready: function() {
         moment.locale(globalLocale.locale(this.locale));
