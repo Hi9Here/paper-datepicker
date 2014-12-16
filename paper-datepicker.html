@@ -17,6 +17,9 @@
       html /deep/ paper-action-dialog.wide .top {
         float: left; min-width: 277px;
       }
+      html /deep/ paper-action-dialog.wide .top.hide {
+        display:none;
+      }
       html /deep/ paper-action-dialog .top .a {
         background:#00796b; padding: 8px; font-size:14px;
       }
@@ -95,7 +98,7 @@
     {{datePicked|format()}}
       <core-icon on-click="{{toggleDatePicker}}" icon="event" aria-label="event" role="img"></core-icon>
         <paper-action-dialog id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
-            <div class="top">
+            <div class="top {{hideTop}}">
               <div class="a">{{datePicking|format('dddd')}}</div>
               <div class="b">{{datePicking|format('MMM')}}</div>
               <div class="c">{{datePicking|format('D')}}</div>
@@ -135,6 +138,7 @@
       publish: {
         datePicked:{},
         locale: '',
+        hideTop: '',
         formatDate: 'l',
       // Defines the date-picker layout mode ('vertical' OR 'horizontal')
         orientation: 'vertical',
@@ -179,6 +183,16 @@
         this.datePicked = this.datePicking;
         toggleDatePicker();
       },
+      setSize: function() {
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        if (h < 630) { //height OK
+          this.orientation = "wide";
+          if (w < 640) {
+            this.hideTop = "hide";
+          }
+        }
+      },
       toggleDatePicker: function(e) {
         var d = e.target.querySelector('#datePicker');
         if (!d) {
@@ -193,6 +207,7 @@
         this.days_of_the_week = moment.weekdays();
         formatDate = this.formatDate;
         scope = this;
+        this.setSize();
       }
     });
     PolymerExpressions.prototype.firstLetter = function(input) {
