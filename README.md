@@ -6,15 +6,17 @@ bower init
 
 bower install --save paper-datepicker
 
-##copy the file
+##How to Use
+copy the file
 
 bower_components/paper-datepicker/demo.html
 to
 index.html
+...so you have a working file. 
 
-So you have a working file. Or just add the tag where you want the date picker button
-
+Or just add the tag 
 <paper-datepicker></paper-datepicker>
+...where you want the date picker button to be
 
 then add the link to the file
 <link rel="import" href="bower_components/paper-datepicker/paper-datepicker.html">
