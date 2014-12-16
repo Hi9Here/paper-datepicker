@@ -46,5 +46,5 @@ which follows these [Paper Button Material Design Principles](http://www.google.
 
 which follows these [Full Screen Dialog Material Design Principals](http://www.google.com/design/spec/components/dialogs.html#dialogs-full-screen-dialogs)
 
-Similiar element
+###Similiar element
 [Paper Calendar](https://github.com/Wenqer/paper-calendar/) by [Wenqer](https://github.com/Wenqer)
