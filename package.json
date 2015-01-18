@@ -1,0 +1,22 @@
+{
+  "name": "paper-datepicker",
+  "version": "0.0.0",
+  "description": "[![Stories in Ready](https://badge.waffle.io/HackITtoday/paper-datepicker.png?label=ready&title=Ready)](https://waffle.io/HackITtoday/paper-datepicker)\r #Paper Datepicker\r *Date Picker based on Material Design and the design spec*",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HackITtoday/paper-datepicker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HackITtoday/paper-datepicker/issues"
+  },
+  "homepage": "https://github.com/HackITtoday/paper-datepicker",
+  "devDependencies": {
+    "karma": "^0.12.31"
+  }
+}
