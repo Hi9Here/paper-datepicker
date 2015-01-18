@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/HackITtoday/paper-datepicker.png?label=ready&title=Ready)](https://waffle.io/HackITtoday/paper-datepicker)
 #Paper Datepicker
 *Date Picker based on Material Design and the design spec*
 
