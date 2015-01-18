@@ -20,6 +20,8 @@ to
 index.html
 ...so you have a working file. 
 
+cp bower_components/paper-datepicker/demo.html index.html
+
 Or just add the tag 
 <paper-datepicker></paper-datepicker>
 ...where you want the date picker button to be
