@@ -1,0 +1,229 @@
+<link rel="import" href="../polymer/polymer.html">
+<script src="../moment/min/moment-with-locales.min.js"></script>
+<link href="../paper-dialog/paper-action-dialog.html" rel="import">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="../core-icons/core-icons.html">
+<link rel="import" href="../font-roboto/roboto.html">
+
+<polymer-element name="paper-datepicker" attributes="datePicked formatDate locale orientatation">
+    <style shim-shadowdom>
+      html /deep/ #scroller {
+        padding: 0; background:#009688;
+      }
+      html /deep/ paper-action-dialog .top {
+        color:#fff; text-align:center;
+      }
+      html /deep/ paper-action-dialog.wide .top {
+        float: left; min-width: 277px;
+      }
+      html /deep/ paper-action-dialog.wide .top.hide {
+        display:none;
+      }
+      html /deep/ paper-action-dialog .top .a {
+        background:#00796b; padding: 8px; font-size:14px;
+      }
+      html /deep/ paper-action-dialog .top .b {
+        font-size:34px; padding-top:10px; text-transform: uppercase;
+      }
+      html /deep/ paper-action-dialog .top .c {
+        font-size: 68px;
+        margin: -14px 0 -20px;
+      }
+      html /deep/ paper-action-dialog .top .d {
+        font-size: 30px; color: #8acfc8; padding: 10px 0 10px;
+      }
+      html /deep/ paper-action-dialog .days {
+        background:#fff;text-align:left;padding:0 3px;float:left;width:277px;min-height:264px;
+      }
+      html /deep/ paper-action-dialog .days .a {
+        font-size: 12px; text-align:center; font-weight: bold; padding: 17px 0 1px;
+      }
+      html /deep/ paper-action-dialog .days .b { font-size:12px; }
+      html /deep/ paper-action-dialog .days span.today {
+        color:#fff; background:#B0B0B0; border-radius: 20px;
+      }
+      html /deep/ .days.d1 span.d1,
+      html /deep/ .days.d2 span.d2,
+      html /deep/ .days.d3 span.d3,
+      html /deep/ .days.d4 span.d4,
+      html /deep/ .days.d5 span.d5,
+      html /deep/ .days.d6 span.d6,
+      html /deep/ .days.d7 span.d7,
+      html /deep/ .days.d8 span.d8,
+      html /deep/ .days.d9 span.d9,
+      html /deep/ .days.d10 span.d10,
+      html /deep/ .days.d11 span.d11,
+      html /deep/ .days.d12 span.d12,
+      html /deep/ .days.d13 span.d13,
+      html /deep/ .days.d14 span.d14,
+      html /deep/ .days.d15 span.d15,
+      html /deep/ .days.d16 span.d16,
+      html /deep/ .days.d17 span.d17,
+      html /deep/ .days.d18 span.d18,
+      html /deep/ .days.d19 span.d19,
+      html /deep/ .days.d20 span.d20,
+      html /deep/ .days.d21 span.d21,
+      html /deep/ .days.d22 span.d22,
+      html /deep/ .days.d23 span.d23,
+      html /deep/ .days.d24 span.d24,
+      html /deep/ .days.d25 span.d25,
+      html /deep/ .days.d26 span.d26,
+      html /deep/ .days.d27 span.d27,
+      html /deep/ .days.d28 span.d28,
+      html /deep/ .days.d29 span.d29,
+      html /deep/ .days.d30 span.d30,
+      html /deep/ .days.d31 span.d31 {
+        color:#fff; background:#009688; border-radius: 18px;
+      }
+      html /deep/ paper-action-dialog .days span {
+        min-height:20px;width:36px;display:inline-block;text-align:center;line-height:37px;cursor:pointer
+      }
+      html /deep/ paper-action-dialog .days span.not-day {
+        cursor:default
+      }
+      html /deep/ paper-action-dialog .days .c {
+        font-size:12px
+      }
+      html /deep/ paper-action-dialog paper-button {
+        color: #009688; padding: 10px; min-width: 39px;
+      }
+      html /deep/ paper-action-dialog {
+        font-family: "RobotoDraft","Roboto",sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      html /deep/ #actions { padding: 0; }
+    </style>
+  <template id="paper-datepicker">
+    <paper-button on-load="{{setup}}" on-click="{{toggleDatePicker}}" raised role="button" tabindex="0">
+    {{datePicked|format()}}
+      <core-icon on-click="{{toggleDatePicker}}" icon="event" aria-label="event" role="img"></core-icon>
+        <paper-action-dialog id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
+            <div class="top {{hideTop}}">
+              <div class="a">{{datePicking|format('dddd')}}</div>
+              <div class="b">{{datePicking|format('MMM')}}</div>
+              <div class="c">{{datePicking|format('D')}}</div>
+              <div class="d">{{datePicking|format('YYYY')}}</div>
+            </div>
+            <div class="days d{{datePicking|format('D')}}">
+              <div class="a" >
+                <core-icon on-click="{{backMonth}}" style="color:#aaa;" icon="arrow-back" role="img"></core-icon>
+                {{datePicking|format('MMMM YYYY')}}
+                <core-icon on-click="{{forwardMonth}}" style="color:#aaa;" icon="arrow-forward" role="img"></core-icon>
+              </div>
+              <div class="b">
+                <template repeat="{{ day_of_the_week in days_of_the_week }}">
+                  <span>
+                    {{day_of_the_week | firstLetter}}
+                  </span>
+                </template>
+              </div>
+              <div class="c">
+                <template repeat="{{ day in notDays(datePicking) }}">
+                  <span class="not-day"></span>
+                </template>
+                <template repeat="{{ day in days(datePicking) }}">
+                  <span class="{{day | today}} d{{day}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
+                </template>
+              </div>
+            </div>
+            <paper-button affirmative>CANCEL</paper-button>
+            <paper-button affirmative autofocus on-click="{{set_datePicked}}">OK</paper-button>
+          </paper-action-dialog>
+      </paper-button>
+  </template>
+
+  <script>
+    var scope, formatDate, globalLocale = moment();
+    Polymer("paper-datepicker", {
+      publish: {
+        datePicked:{},
+        locale: '',
+        hideTop: '',
+        formatDate: 'l',
+      // Defines the date-picker layout mode ('vertical' OR 'horizontal')
+        orientation: 'vertical',
+      //locales:
+
+      // af = Afrikaans,sq = Albanian,ar = Arabic,ar-ma = Arabic (Morocco),ar-sa = Arabic (Saudi Arabia),hy-am = Armenian,az = Azerbaijani,id = Bahasa Indonesia,ms-my = Bahasa Malayu,eu = Basque,be = Belarusian,bn = Bengali,bs = Bosnian,br = Breton,bg = Bulgarian,my = Burmese,ca = Catalan,zh-cn = Chinese,zh-tw = Chinese (Traditional),cv = Chuvash,hr = Croatian,cs = Czech,da = Danish,nl = Dutch,en = English,en-au = English (Australia),en-ca = English (Canada),en-gb = English (England),eo = Esperanto,et = Estonian,fo = Farose,fi = Finnish,fr = French,fr-ca = French (Canada),gl = Galician,ka = Georgian,de = German,de-at = German (Austria),el = Greek,he = Hebrew,hi = Hindi,hu = Hungarian,is = Icelandic,it = Italian,ja = Japanese,km = Khmer (Cambodia),ko = Korean,lv = Latvian,lt = Lithuanian,lb = Luxembourgish,mk = Macedonian,ml = Malayalam,mr = Marathi,ne = Nepalese,nb = Norwegian,nn = Norwegian Nynorsk,fa = Persian,pl = Polish,pt = Portuguese,pt-br = Portuguese (Brazil),ro = Romanian,ru = Russian,sr = Serbian,sr-cyrl = Serbian Cyrillic,sk = Slovak,sl = Slovenian,es = Spanish,sv = Swedish,tl-ph = Tagalog (Filipino),tzm = Tamaziɣt,tzm-latn = Tamaziɣt Latin,ta = Tamil,th = Thai,bo = Tibetan,tr = Turkish,uk = Ukrainia,uz = Uzbe,vi = Vietnamese,cy = Welsh
+
+      },
+      days: function() {
+        var days = [];
+        moment.locale(globalLocale.locale());
+        for(i=1;i<=moment(this.datePicking).daysInMonth();i++){
+          days[i-1] = i;
+        }
+        return days;
+      },
+      notDays: function() {
+        moment.locale(globalLocale.locale());
+        var notdays = +moment(this.datePicking).startOf('month').format("d")-1;
+        var notDays = [];
+        if (notdays >= 0) {
+          notDays[notdays] = "";
+        }
+        return notDays;
+      },
+      dateClicked: function(e) {
+        moment.locale(globalLocale.locale());
+        var element = e.originalTarget ? e.originalTarget : e.toElement;
+        scope.datePicking = moment(this.datePicking).startOf('month').add(+element.textContent - 1 ,"days");
+      },
+      datePicking: globalLocale,
+      days_of_the_week: [],
+      backMonth: function() {
+        moment.locale(globalLocale.locale());
+        this.datePicking = moment(this.datePicking).subtract(1, 'months');
+      },
+      forwardMonth: function() {
+        moment.locale(globalLocale.locale());
+        this.datePicking = moment(this.datePicking).add(1, 'months');
+      },
+      set_datePicked: function() { 
+        this.datePicked = this.datePicking;
+        toggleDatePicker();
+      },
+      setSize: function() {
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        if (h < 630) { //height OK
+          this.orientation = "wide";
+          if (w < 640) {
+            this.hideTop = "hide";
+          }
+        }
+      },
+      toggleDatePicker: function(e) {
+        this.$.datePicker.toggle();
+      },
+      ready: function() {
+        moment.locale(globalLocale.locale(this.locale));
+        this.datePicking = moment();
+        this.datePicked = moment();
+        this.days_of_the_week = moment.weekdays();
+        formatDate = this.formatDate;
+        scope = this;
+        this.setSize();
+      }
+    });
+    PolymerExpressions.prototype.firstLetter = function(input) {
+      return input[0];
+    };
+    PolymerExpressions.prototype.today = function(input) {
+      moment.locale(globalLocale.locale());
+      if (moment(this.datePicking).isSame(moment(), "month" )) {
+        if (moment(this.datePicking).startOf('month').add(+input - 1 ,"days").isSame(moment(), "day" )) {
+          // dropping as buggy return "today";
+        }
+      }
+    };
+    PolymerExpressions.prototype.format = function(input, letter) {
+        moment.locale(globalLocale.locale());
+        if (letter == null) {
+          letter = formatDate;
+        }
+        return moment(input).format(letter);
+    };
+  </script>
+</polymer-element>

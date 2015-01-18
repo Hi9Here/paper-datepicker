@@ -1,0 +1,21 @@
+{
+  "name": "testing-dialog",
+  "version": "0.0.0",
+  "homepage": "https://github.com/HackITtoday/testing-dialog",
+  "authors": [
+    "marcus hitchins <marcus7777@gmail.com>"
+  ],
+  "description": "Date Picker based on Material Design and the design spec",
+  "keywords": [
+    "paper","datepicker"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "paper-dialog": "Polymer/paper-dialog#~0.5.1",
+    "moment": "~2.8.4",
+    "paper-button": "Polymer/paper-button#~0.5.1",
+    "webcomponentsjs": "~0.5.1",
+    "core-icon": "Polymer/core-icon#~0.5.1",
+    "paper-ripple": "Polymer/paper-ripple#~0.5.1"
+  }
+}
