@@ -2,6 +2,9 @@
 #Paper Datepicker
 *Date Picker based on Material Design and the design spec*
 
+#Burndown of the Project
+[![Throughput Graph](https://graphs.waffle.io/HackITtoday/paper-datepicker/throughput.svg)](https://waffle.io/HackITtoday/paper-datepicker/metrics)
+
 #install
 bower init
 
