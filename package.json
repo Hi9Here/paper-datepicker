@@ -1,0 +1,27 @@
+{
+  "name": "paper-datepicker",
+  "version": "0.0.0",
+  "description": "[![Stories in Ready](https://badge.waffle.io/HackITtoday/paper-datepicker.png?label=ready&title=Ready)](https://waffle.io/HackITtoday/paper-datepicker)\r #Paper Datepicker\r *Date Picker based on Material Design and the design spec*",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/karma start --single-run --browsers Chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HackITtoday/paper-datepicker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HackITtoday/paper-datepicker/issues"
+  },
+  "homepage": "https://github.com/HackITtoday/paper-datepicker",
+  "devDependencies": {
+    "jasmine-core": "^2.1.3",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.4",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "web-component-tester": "^2.0.5"
+  }
+}
