@@ -1,4 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/HackITtoday/paper-datepicker.png?label=ready&title=Ready)](https://waffle.io/HackITtoday/paper-datepicker)
+[![Build Status](https://travis-ci.org/HackITtoday/paper-datepicker.svg?branch=master)](https://travis-ci.org/HackITtoday/paper-datepicker)
+
 #Paper Datepicker
 *Date Picker based on Material Design and the design spec*
 
@@ -17,6 +19,8 @@ bower_components/paper-datepicker/demo.html
 to
 index.html
 ...so you have a working file. 
+
+cp bower_components/paper-datepicker/demo.html index.html
 
 Or just add the tag 
 <paper-datepicker></paper-datepicker>
