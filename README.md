@@ -1,10 +1,12 @@
 [![Stories in Ready](https://badge.waffle.io/HackITtoday/paper-datepicker.png?label=ready&title=Ready)](https://waffle.io/HackITtoday/paper-datepicker)
 
-#Paper Datepicker
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/HackITtoday/paper-datepicker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 *Date Picker based on Material Design and the design spec*
 
 #Burndown of the Project
 [![Throughput Graph](https://graphs.waffle.io/HackITtoday/paper-datepicker/throughput.svg)](https://waffle.io/HackITtoday/paper-datepicker/metrics)
+
+#Paper Datepicker
 
 #install
 bower init
