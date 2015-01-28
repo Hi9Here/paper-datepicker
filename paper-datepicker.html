@@ -95,7 +95,7 @@
       html /deep/ #actions { padding: 0; }
     </style>
   <template id="paper-datepicker">
-    <paper-button on-load="{{setup}}" on-click="{{toggleDatePicker}}" raised role="button" tabindex="0">
+    <paper-button on-click="{{toggleDatePicker}}" raised role="button" tabindex="0">
     {{datePicked|format()}}
       <core-icon on-click="{{toggleDatePicker}}" icon="event" aria-label="event" role="img"></core-icon>
         <paper-action-dialog id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
