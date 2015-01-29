@@ -8,7 +8,7 @@
 
 <polymer-element name="paper-datepicker" attributes="datePicked formatDate locale orientatation">
     <style shim-shadowdom>
-      paper-datepicker::content #scroller {
+      html /deep/ paper-action-dialog#datePicker #scroller {
         padding: 0; background:#009688;
       }
       html /deep/ paper-action-dialog#datePicker .top {
