@@ -8,39 +8,39 @@
 
 <polymer-element name="paper-datepicker" attributes="datePicked formatDate locale orientatation">
     <style shim-shadowdom>
-      html /deep/ paper-action-dialog#datePicker #scroller {
+      html /deep/ #datePicker #scroller {
         padding: 0; background:#009688;
       }
-      html /deep/ paper-action-dialog#datePicker .top {
+      html /deep/ #datePicker .top {
         color:#fff; text-align:center;
       }
-      html /deep/ paper-action-dialog#datePicker.wide .top {
+      html /deep/ #datePicker.wide .top {
         float: left; min-width: 277px;
       }
-      html /deep/ paper-action-dialog#datePicker.wide .top.hide {
+      html /deep/ #datePicker.wide .top.hide {
         display:none;
       }
-      html /deep/ paper-action-dialog#datePicker .top .a {
+      html /deep/ #datePicker .top .a {
         background:#00796b; padding: 8px; font-size:14px;
       }
-      html /deep/ paper-action-dialog#datePicker .top .b {
+      html /deep/ #datePicker .top .b {
         font-size:34px; padding-top:10px; text-transform: uppercase;
       }
-      html /deep/ paper-action-dialog#datePicker .top .c {
+      html /deep/ #datePicker .top .c {
         font-size: 68px;
         margin: -14px 0 -20px;
       }
-      html /deep/ paper-action-dialog#datePicker .top .d {
+      html /deep/ #datePicker .top .d {
         font-size: 30px; color: #8acfc8; padding: 10px 0 10px;
       }
-      html /deep/ paper-action-dialog#datePicker .days {
+      html /deep/ #datePicker .days {
         background:#fff;text-align:left;padding:0 3px;float:left;width:277px;min-height:301px;
       }
-      html /deep/ paper-action-dialog#datePicker .days .a {
+      html /deep/ #datePicker .days .a {
         font-size: 12px; text-align:center; font-weight: bold; padding: 17px 0 1px;
       }
-      html /deep/ paper-action-dialog#datePicker .days .b { font-size:12px; }
-      html /deep/ paper-action-dialog#datePicker .days span.today {
+      html /deep/ #datePicker .days .b { font-size:12px; }
+      html /deep/ #datePicker .days span.today {
         color:#fff; background:#B0B0B0; border-radius: 20px;
       }
       html /deep/ .days.d1 span.d1,
@@ -76,16 +76,16 @@
       html /deep/ .days.d31 span.d31 {
         color:#fff; background:#009688; border-radius: 18px;
       }
-      html /deep/ paper-action-dialog#datePicker .days span {
+      html /deep/ #datePicker .days span {
         min-height:20px;width:36px;display:inline-block;text-align:center;line-height:37px;cursor:pointer
       }
-      html /deep/ paper-action-dialog#datePicker .days span.not-day {
+      html /deep/ #datePicker .days span.not-day {
         cursor:default
       }
-      html /deep/ paper-action-dialog#datePicker .days .c {
+      html /deep/ #datePicker .days .c {
         font-size:12px
       }
-      html /deep/ paper-action-dialog#datePicker paper-button {
+      html /deep/ #datePicker paper-button {
         color: #009688; padding: 10px; min-width: 39px;
       }
       html /deep/ paper-action-dialog {
