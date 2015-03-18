@@ -14,10 +14,10 @@
       html /deep/ paper-action-dialog#datePicker .top {
         color:#fff; text-align:center;
       }
-      html /deep/ paper-action-dialog#datePicker.wide .top {
+      html /deep/ paper-action-dialog#datePicker .wide .top {
         float: left; min-width: 277px;
       }
-      html /deep/ paper-action-dialog#datePicker.wide .top.hide {
+      html /deep/ paper-action-dialog#datePicker .wide .top.hide {
         display:none;
       }
       html /deep/ paper-action-dialog#datePicker .top .a {
@@ -34,47 +34,51 @@
         font-size: 30px; color: #8acfc8; padding: 10px 0 10px;
       }
       html /deep/ paper-action-dialog#datePicker .days {
-        background:#fff;text-align:left;padding:0 3px;float:left;width:277px;min-height:301px;
+        background:#fff;padding:0 3px;float:left;width:277px;
+        display: flex;flex-wrap: wrap;align-content: center;text-align: center;
       }
       html /deep/ paper-action-dialog#datePicker .days .a {
-        font-size: 12px; text-align:center; font-weight: bold; padding: 17px 0 1px;
+        font-size: 12px; text-align:center; font-weight: bold; padding: 17px 0 1px;  width: 100%;
       }
       html /deep/ paper-action-dialog#datePicker .days .b { font-size:12px; }
       html /deep/ paper-action-dialog#datePicker .days span.today {
         color:#fff; background:#B0B0B0; border-radius: 20px;
       }
-      html /deep/ .days.d1 span.d1,
-      html /deep/ .days.d2 span.d2,
-      html /deep/ .days.d3 span.d3,
-      html /deep/ .days.d4 span.d4,
-      html /deep/ .days.d5 span.d5,
-      html /deep/ .days.d6 span.d6,
-      html /deep/ .days.d7 span.d7,
-      html /deep/ .days.d8 span.d8,
-      html /deep/ .days.d9 span.d9,
-      html /deep/ .days.d10 span.d10,
-      html /deep/ .days.d11 span.d11,
-      html /deep/ .days.d12 span.d12,
-      html /deep/ .days.d13 span.d13,
-      html /deep/ .days.d14 span.d14,
-      html /deep/ .days.d15 span.d15,
-      html /deep/ .days.d16 span.d16,
-      html /deep/ .days.d17 span.d17,
-      html /deep/ .days.d18 span.d18,
-      html /deep/ .days.d19 span.d19,
-      html /deep/ .days.d20 span.d20,
-      html /deep/ .days.d21 span.d21,
-      html /deep/ .days.d22 span.d22,
-      html /deep/ .days.d23 span.d23,
-      html /deep/ .days.d24 span.d24,
-      html /deep/ .days.d25 span.d25,
-      html /deep/ .days.d26 span.d26,
-      html /deep/ .days.d27 span.d27,
-      html /deep/ .days.d28 span.d28,
-      html /deep/ .days.d29 span.d29,
-      html /deep/ .days.d30 span.d30,
-      html /deep/ .days.d31 span.d31 {
-        color:#fff; background:#009688; border-radius: 18px;
+      html /deep/ paper-action-dialog#datePicker .days.d1 span.d1,
+      html /deep/ paper-action-dialog#datePicker .days.d2 span.d2,
+      html /deep/ paper-action-dialog#datePicker .days.d3 span.d3,
+      html /deep/ paper-action-dialog#datePicker .days.d4 span.d4,
+      html /deep/ paper-action-dialog#datePicker .days.d5 span.d5,
+      html /deep/ paper-action-dialog#datePicker .days.d6 span.d6,
+      html /deep/ paper-action-dialog#datePicker .days.d7 span.d7,
+      html /deep/ paper-action-dialog#datePicker .days.d8 span.d8,
+      html /deep/ paper-action-dialog#datePicker .days.d9 span.d9,
+      html /deep/ paper-action-dialog#datePicker .days.d10 span.d10,
+      html /deep/ paper-action-dialog#datePicker .days.d11 span.d11,
+      html /deep/ paper-action-dialog#datePicker .days.d12 span.d12,
+      html /deep/ paper-action-dialog#datePicker .days.d13 span.d13,
+      html /deep/ paper-action-dialog#datePicker .days.d14 span.d14,
+      html /deep/ paper-action-dialog#datePicker .days.d15 span.d15,
+      html /deep/ paper-action-dialog#datePicker .days.d16 span.d16,
+      html /deep/ paper-action-dialog#datePicker .days.d17 span.d17,
+      html /deep/ paper-action-dialog#datePicker .days.d18 span.d18,
+      html /deep/ paper-action-dialog#datePicker .days.d19 span.d19,
+      html /deep/ paper-action-dialog#datePicker .days.d20 span.d20,
+      html /deep/ paper-action-dialog#datePicker .days.d21 span.d21,
+      html /deep/ paper-action-dialog#datePicker .days.d22 span.d22,
+      html /deep/ paper-action-dialog#datePicker .days.d23 span.d23,
+      html /deep/ paper-action-dialog#datePicker .days.d24 span.d24,
+      html /deep/ paper-action-dialog#datePicker .days.d25 span.d25,
+      html /deep/ paper-action-dialog#datePicker .days.d26 span.d26,
+      html /deep/ paper-action-dialog#datePicker .days.d27 span.d27,
+      html /deep/ paper-action-dialog#datePicker .days.d28 span.d28,
+      html /deep/ paper-action-dialog#datePicker .days.d29 span.d29,
+      html /deep/ paper-action-dialog#datePicker .days.d30 span.d30,
+      html /deep/ paper-action-dialog#datePicker .days.d31 span.d31 {
+        color:#fff; background:#009688;
+        width: 14%; max-width:36px; line-height:36px; display: inline-block;
+        margin: auto;
+        border-radius: 100px;
       }
       html /deep/ paper-action-dialog#datePicker .days span {
         min-height:20px;width:36px;display:inline-block;text-align:center;line-height:37px;cursor:pointer
@@ -85,8 +89,7 @@
       html /deep/ paper-action-dialog#datePicker .days .c {
         font-size:12px
       }
-      html /deep/ paper-action-dialog#datePicker paper-button {
-        color: #009688; padding: 10px; min-width: 39px;
+      html /deep/ paper-button {
       }
       html /deep/ paper-action-dialog {
         font-family: "RobotoDraft","Roboto",sans-serif;
@@ -98,7 +101,7 @@
     <paper-button on-click="{{toggleDatePicker}}" raised role="button" tabindex="0">
     {{datePicked|format()}}
       <core-icon on-click="{{toggleDatePicker}}" icon="event" aria-label="event" role="img"></core-icon>
-        <paper-action-dialog id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
+      <paper-action-dialog id="datePicker" class="{{orientation}}" backdrop autoCloseDisabled>
             <div class="top {{hideTop}}">
               <div class="a">{{datePicking|format('dddd')}}</div>
               <div class="b">{{datePicking|format('MMM')}}</div>
@@ -124,6 +127,9 @@
                 </template>
                 <template repeat="{{ day in days(datePicking) }}">
                   <span class="{{day | today}} d{{day}}" on-click="{{ dateClicked }}" role="button" >{{day}}</span>
+                </template>
+                <template repeat="{{ day in notDaysEnd(datePicking) }}">
+                  <span class="not-day"></span>
                 </template>
               </div>
             </div>
@@ -162,6 +168,16 @@
         var notDays = [];
         if (notdays >= 0) {
           notDays[notdays] = "";
+        }
+        return notDays;
+      },
+      notDaysEnd: function() {
+        moment.locale(globalLocale.locale());
+        var notdays = +moment(this.datePicking).endOf('month').format("d")+1;
+        notdaysEnd = 7 - notdays;
+        var notDays = [];
+        if (notdays >= 0) {
+          notDays[notdaysEnd] = "";
         }
         return notDays;
       },
