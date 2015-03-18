@@ -9,7 +9,7 @@
 <polymer-element name="paper-datepicker" attributes="datePicked formatDate locale orientatation">
     <style shim-shadowdom>
       html /deep/ paper-action-dialog#datePicker #scroller {
-        padding: 0; background:#009688;
+        padding: 0; background:#009688;max-width:266px;min-width:206px; 
       }
       html /deep/ paper-action-dialog#datePicker .top {
         color:#fff; text-align:center;
@@ -27,20 +27,19 @@
         font-size:34px; padding-top:10px; text-transform: uppercase;
       }
       html /deep/ paper-action-dialog#datePicker .top .c {
-        font-size: 68px;
-        margin: -14px 0 -20px;
+        font-size:68px; margin: -14px 0 -20px;
       }
       html /deep/ paper-action-dialog#datePicker .top .d {
-        font-size: 30px; color: #8acfc8; padding: 10px 0 10px;
+        font-size:30px; color: #8acfc8; padding: 10px 0 10px;
       }
       html /deep/ paper-action-dialog#datePicker .days {
-        background:#fff;padding:0 3px;float:left;width:277px;
+        background:#fff;padding:0 3px;float:left;
         display: flex;flex-wrap: wrap;align-content: center;text-align: center;
       }
       html /deep/ paper-action-dialog#datePicker .days .a {
         font-size: 12px; text-align:center; font-weight: bold; padding: 17px 0 1px;  width: 100%;
       }
-      html /deep/ paper-action-dialog#datePicker .days .b { font-size:12px; }
+      html /deep/ paper-action-dialog#datePicker .days .b { font-size:12px;  width: 100%;}
       html /deep/ paper-action-dialog#datePicker .days span.today {
         color:#fff; background:#B0B0B0; border-radius: 20px;
       }
@@ -76,18 +75,17 @@
       html /deep/ paper-action-dialog#datePicker .days.d30 span.d30,
       html /deep/ paper-action-dialog#datePicker .days.d31 span.d31 {
         color:#fff; background:#009688;
-        width: 14%; max-width:36px; line-height:36px; display: inline-block;
-        margin: auto;
-        border-radius: 100px;
+        width: 13%; max-width:36px; line-height:36px; display: inline-block;
+        margin: auto; border-radius: 100px;
       }
       html /deep/ paper-action-dialog#datePicker .days span {
-        min-height:20px;width:36px;display:inline-block;text-align:center;line-height:37px;cursor:pointer
+        min-height:20px;width: 13%; max-width:36px;display:inline-block;text-align:center;line-height:37px;cursor:pointer
       }
       html /deep/ paper-action-dialog#datePicker .days span.not-day {
         cursor:default
       }
       html /deep/ paper-action-dialog#datePicker .days .c {
-        font-size:12px
+         width: 100%;font-size:12px
       }
       html /deep/ paper-button {
       }
