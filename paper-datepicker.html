@@ -8,16 +8,16 @@
 
 <polymer-element name="paper-datepicker" attributes="datePicked formatDate locale orientatation">
     <style shim-shadowdom>
-      html /deep/ paper-action-dialog#datePicker #scroller {
-        padding: 0; background:#009688;max-width:266px;min-width:206px; 
+      html /deep/ paper-action-dialog#datePicker::shadow div#scroller {
+        padding: 0; max-width:266px;min-width:206px; 
       }
       html /deep/ paper-action-dialog#datePicker .top {
-        color:#fff; text-align:center;
+        color:#fff; text-align:center;background:#009688;
       }
-      html /deep/ paper-action-dialog#datePicker .wide .top {
+      html /deep/ paper-action-dialog#datePicker.wide .top {
         float: left; min-width: 277px;
       }
-      html /deep/ paper-action-dialog#datePicker .wide .top.hide {
+      html /deep/ paper-action-dialog#datePicker.wide .top.hide {
         display:none;
       }
       html /deep/ paper-action-dialog#datePicker .top .a {
@@ -33,7 +33,7 @@
         font-size:30px; color: #8acfc8; padding: 10px 0 10px;
       }
       html /deep/ paper-action-dialog#datePicker .days {
-        background:#fff;padding:0 3px;float:left;
+        background:#fff;padding:0 3px;max-width:277px;
         display: flex;flex-wrap: wrap;align-content: center;text-align: center;
       }
       html /deep/ paper-action-dialog#datePicker .days .a {
@@ -219,6 +219,10 @@
         formatDate = this.formatDate;
         scope = this;
         this.setSize();
+        // fix chrome
+        var d = document.querySelectorAll("html /deep/ paper-action-dialog#datePicker");
+        var c = d[0].shadowRoot.querySelectorAll("div#scroller");
+        c[0].style.padding = 0;
       }
     });
     PolymerExpressions.prototype.firstLetter = function(input) {
