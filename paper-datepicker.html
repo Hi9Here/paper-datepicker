@@ -140,6 +140,7 @@
   <script>
     var scope, formatDate, globalLocale = moment();
     Polymer("paper-datepicker", {
+
       publish: {
         datePicked:{},
         locale: '',
@@ -219,10 +220,6 @@
         formatDate = this.formatDate;
         scope = this;
         this.setSize();
-        // fix chrome
-        var d = document.querySelectorAll("html /deep/ paper-action-dialog#datePicker");
-        var c = d[0].shadowRoot.querySelectorAll("div#scroller");
-        c[0].style.padding = 0;
       }
     });
     PolymerExpressions.prototype.firstLetter = function(input) {
